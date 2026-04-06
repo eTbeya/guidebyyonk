@@ -163,6 +163,8 @@ body {
 
   justify-content: center;
   align-items: center;
+
+  z-index: 1000;
 }
 
 /* CONTENT */
@@ -184,7 +186,7 @@ body {
   font-size: 22px;
 }
 
-/* POST TEXT */
+/* TEXT */
 .post-content {
   line-height: 1.6;
 }
@@ -219,4 +221,5 @@ body {
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
+  border-radius: 10px;
 }
