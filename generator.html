@@ -117,9 +117,10 @@ pre {
     <button onclick="addList()">List</button>
     <button onclick="addCode()">Code</button>
     <button onclick="addImage()">Image</button>
+    <button onclick="addHighlight()">🔥 Highlight</button>
   </div>
 
-  <textarea id="content" placeholder="Write here (Markdown supported)..."></textarea>
+  <textarea id="content" placeholder="Write here..."></textarea>
 
   <div class="preview-box">
     <h3>Preview</h3>
@@ -152,14 +153,12 @@ pre {
 
 let images = [];
 
-/* ---------- EDITOR ---------- */
-
+/* EDITOR */
 function wrap(symbol) {
   const textarea = document.getElementById("content");
   const start = textarea.selectionStart;
   const end = textarea.selectionEnd;
   const selected = textarea.value.substring(start, end);
-
   textarea.setRangeText(symbol + selected + symbol);
 }
 
@@ -175,14 +174,17 @@ function addCode() {
 
 function addImage() {
   const textarea = document.getElementById("content");
-  const url = prompt("Image path (images/x.jpg):");
+  const url = prompt("Image path:");
   if (!url) return;
-
   textarea.value += `\n<img src="${url}">\n`;
 }
 
-/* ---------- IMAGE LIST ---------- */
+function addHighlight() {
+  const textarea = document.getElementById("content");
+  textarea.value += "\n!! Important text\n";
+}
 
+/* IMAGE LIST */
 function addImageToList() {
   const input = document.getElementById("imgInput");
   if (!input.value) return;
@@ -211,8 +213,7 @@ function removeImg(i) {
   renderImages();
 }
 
-/* ---------- MARKDOWN ---------- */
-
+/* MARKDOWN FIXED */
 function markdownToHTML(text) {
 
   text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -225,18 +226,23 @@ function markdownToHTML(text) {
 
   text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
 
-  text = text.replace(/^\- (.*$)/gim, "<li>$1</li>");
-  text = text.replace(/(<li>.*<\/li>)/gim, "<ul>$1</ul>");
+  /* LIST FIX */
+  text = text.replace(/(?:^- .+\n?)+/gm, match => {
+    const items = match.trim().split("\n")
+      .map(line => `<li>${line.replace("- ","")}</li>`)
+      .join("");
+    return `<ul>${items}</ul>`;
+  });
 
-  text = text.replace(/(https?:\/\/.*\.(png|jpg|jpeg|gif))/g, '<img src="$1">');
+  /* HIGHLIGHT */
+  text = text.replace(/^!! (.*$)/gim, '<div class="highlight">$1</div>');
 
   text = text.replace(/\n/g, "<br>");
 
   return text;
 }
 
-/* ---------- LIVE PREVIEW ---------- */
-
+/* PREVIEW */
 const contentInput = document.getElementById("content");
 const preview = document.getElementById("preview");
 
@@ -244,8 +250,7 @@ contentInput.addEventListener("input", () => {
   preview.innerHTML = markdownToHTML(contentInput.value);
 });
 
-/* ---------- GENERATE ---------- */
-
+/* GENERATE */
 function generate() {
   const title = document.getElementById("title").value;
   const category = document.getElementById("category").value;
