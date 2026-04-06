@@ -7,7 +7,6 @@ const categoryNav = document.getElementById("categoryNav");
 let activeCategory = "all";
 
 /* ---------- CATEGORIES ---------- */
-
 function generateCategories() {
   const categories = [...new Set(posts.map(p => p.category))];
 
@@ -46,7 +45,6 @@ function setActive(el) {
 }
 
 /* ---------- POSTS ---------- */
-
 function renderPosts() {
   const search = searchInput.value.toLowerCase();
   grid.innerHTML = "";
@@ -76,7 +74,6 @@ function renderPosts() {
 }
 
 /* ---------- MODAL ---------- */
-
 function openPost(post) {
   modal.style.display = "flex";
 
@@ -104,12 +101,22 @@ modal.onclick = (e) => {
 };
 
 /* ---------- LIGHTBOX ---------- */
-
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
   lb.innerHTML = `<img src="${src}">`;
+  lb.onclick = () => lb.remove();
+
+  document.body.appendChild(lb);
+}
+
+/* ---------- EVENTS ---------- */
+searchInput.oninput = renderPosts;
+
+/* ---------- INIT ---------- */
+generateCategories();
+renderPosts();  lb.innerHTML = `<img src="${src}">`;
   lb.onclick = () => lb.remove();
 
   document.body.appendChild(lb);
