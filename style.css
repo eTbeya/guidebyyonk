@@ -86,7 +86,7 @@ body {
   }
 }
 
-/* SWORDS */
+/* ⚔️ SWORDS (НОВИ - FIXED) */
 .swords {
   position: absolute;
   width: 150px;
@@ -102,25 +102,27 @@ body {
   height: 80px;
   background: linear-gradient(#00f0ff, #fff);
   box-shadow: 0 0 10px #00f0ff;
+  transform-origin: bottom center;
 }
 
-/* ✅ FIXED (без двойно въртене) */
 .sword1 {
-  animation: spin 6s linear infinite;
+  animation: swing1 4s ease-in-out infinite;
 }
 
 .sword2 {
-  animation: spinReverse 6s linear infinite;
+  animation: swing2 4s ease-in-out infinite;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg) translateY(-60px); }
-  to { transform: rotate(360deg) translateY(-60px); }
+@keyframes swing1 {
+  0%   { transform: rotate(-40deg) translateY(-60px); }
+  50%  { transform: rotate(40deg) translateY(-60px); }
+  100% { transform: rotate(-40deg) translateY(-60px); }
 }
 
-@keyframes spinReverse {
-  from { transform: rotate(360deg) translateY(-60px); }
-  to { transform: rotate(0deg) translateY(-60px); }
+@keyframes swing2 {
+  0%   { transform: rotate(40deg) translateY(-60px); }
+  50%  { transform: rotate(-40deg) translateY(-60px); }
+  100% { transform: rotate(40deg) translateY(-60px); }
 }
 
 /* DIVIDER */
