@@ -15,4 +15,18 @@ const posts = [
 },
 
 
+{
+  title: "test 2",
+  category: "Jorad",
+  cover: "images/1.jpg",
+  content: `
+<b>Talents</b><br><b>PVP</b><br><i>Before you reach the feather count needed for end nodes you will want to follow it like this</i><br><br><ul><li>1. Start with Blue Fury branch and Yellow Archery branch. Get Combo DMG and Crit DMG and get these up to 10</li></ul><br><ul><li>2. Then go to Red Tamer and Blue Sorcery and start pushing Class Res and Crit Res and level these to 5.</li></ul><br><ul><li>3. Start pushing all the above doing 1 Crit/Class Res for every 2 Combo/Crit</li></ul><br><ul><li>4. You can then start adding in base ATK/HP when the above starts to get too costly</li></ul><br><pre><code><br>(While you may think getting all the base stasts would be the right move, they are suprisingly low bonuses in mid game and so I only recommend going for any when the main stats are too costly)<br><br>The steps above will eventually be your base with Res/Combo/Crit at 20/20, you will then add in extra stats the more feathers you have<br></code></pre><br><b>Other Stats with High Feather count:</b><br><pre><code><br>Energy Regen SPD - Ignore Combo - Ignore Counter - Evasion - Ignore Evasion (For 200+ Evasion players) - Combo Healing - Wound (Needed vs Tanks) - Healing<br></code></pre><br><br><b>PVE</b><br><i>Before you reach the feather count needed for end nodes you will want to follow it like this:</i><br><br>1. Start with Blue Fury branch and Yellow Archery branch. Get Combo DMG and Crit DMG and get these up to 10.<br>2. Then go to Blue Sorcery and start pushing Energy Regen SPD and level this to 5<br>3. Start pushing all the above doing 1 Energy Regen SPD for every 2 Combo/Crit<br>4. You can then start adding in base ATK when the above starts to get too costly<br><pre><code><br>(While you may think getting all the base stasts would be the right move, they are suprisingly low bonuses in mid game and so I only recommend going for any when the main stats are too costly)<br><br>The steps above will eventually be your base with SPD/Combo/Crit at 20/20, you will then add in extra stats the more feathers you have<br></code></pre><br><b>Other Stats with High Feather count:</b><br><pre><code><br>Evasion - Combo Healing - Healing - Skill Healing - Basic ATK Res<br></code></pre>
+  `,
+  images: [
+    "images/2.jpg",
+    "images/3.jpg"
+  ]
+},
+
+
 ];
