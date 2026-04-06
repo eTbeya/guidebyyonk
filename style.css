@@ -120,6 +120,40 @@ body {
   to { transform: rotate(0deg) translateY(-60px); }
 }
 
+/* DIVIDER */
+.divider {
+  width: 80%;
+  height: 2px;
+  margin: 10px auto 20px auto;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #00f0ff,
+    #ff00c8,
+    #00f0ff,
+    transparent
+  );
+
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #ff00c8;
+
+  animation: lineGlow 3s ease-in-out infinite alternate;
+}
+
+/* glow animation */
+@keyframes lineGlow {
+  from {
+    opacity: 0.5;
+    transform: scaleX(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
 /* GRID */
 .grid {
   padding: 20px;
