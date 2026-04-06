@@ -212,4 +212,4 @@ function prevImage(img) {
 searchInput.oninput = renderPosts;
 
 generateCategories();
-renderPosts(); 
+renderPosts();
