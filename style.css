@@ -327,3 +327,80 @@ body {
   max-height: 90%;
   border-radius: 10px;
 } 
+
+/* ===== MODAL UPGRADE ===== */
+
+/* Заглавие */
+.modal-content h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+
+  background: linear-gradient(90deg, #00f0ff, #ff00c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Подзаглавия (PVP / PVE / High level stats) */
+.modal-content b {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 5px;
+
+  color: #00f0ff;
+  font-size: 16px;
+}
+
+/* Италици */
+.modal-content i {
+  color: rgba(255,255,255,0.6);
+}
+
+/* Списъци */
+.modal-content ul,
+.modal-content ol {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* Всеки ред */
+.modal-content li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* 🔥 CODE BLOCK / GUIDE BOX */
+.modal-content pre {
+  background: rgba(255,255,255,0.04);
+  padding: 12px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 0 10px rgba(0,240,255,0.1),
+    0 0 20px rgba(255,0,200,0.05);
+
+  overflow-x: auto;
+}
+
+/* 🔥 ВАЖНИ секции */
+.modal-content .highlight {
+  margin: 15px 0;
+  padding: 12px;
+
+  border-left: 3px solid #ff00c8;
+
+  background: rgba(255,0,200,0.08);
+  border-radius: 8px;
+}
+
+/* 🔥 MAIN IDEA */
+.modal-content strong {
+  color: #ff00c8;
+}
+
+/* Малко spacing */
+.modal-content br {
+  display: block;
+  margin: 6px 0;
+}
