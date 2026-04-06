@@ -117,39 +117,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-/* ---------------- SWIPE DOWN ---------------- */
-
-let startY = 0;
-let currentY = 0;
-let isDragging = false;
-
-modalContent.addEventListener("touchstart", (e) => {
-  startY = e.touches[0].clientY;
-  isDragging = true;
-});
-
-modalContent.addEventListener("touchmove", (e) => {
-  if (!isDragging) return;
-
-  currentY = e.touches[0].clientY;
-  let diff = currentY - startY;
-
-  if (diff > 0) {
-    modalContent.style.transform = `translateY(${diff}px)`;
-  }
-});
-
-modalContent.addEventListener("touchend", () => {
-  isDragging = false;
-
-  let diff = currentY - startY;
-
-  if (diff > 120) {
-    closeModal();
-  } else {
-    modalContent.style.transform = "translateY(0)";
-  }
-});
 
 /* ---------------- LIGHTBOX ---------------- */
 
