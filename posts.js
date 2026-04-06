@@ -1,12 +1,53 @@
 const posts = [
 
-
 {
   title: "Test parking war",
   category: "Cross",
   cover: "images/3.jpg",
   content: `
-<b>How to enter at parking war :</b><br><i>Manor icon -&gt; Parking Wars -&gt; Find Parking Lot -&gt; Cross - server Spots</i><br><br><b>What you will see, when you enter</b><br>You will see between 3 and 4 servers. Each server starts with its number — ours is <b>s30619</b>. Under the name on the right, you will see a small icon with a number next to it; this shows how many parking spots are available on that server.<br><br>Choose one of the servers, and when you click the icon on the right, it will transfer you to it. There, under each spot, on the left side there is a shield icon showing how many people are currently defending the parking, and on the right side there is an icon with two swords showing how many people are attacking it at the moment.<br><br>If you see “In Peace” written in yellow under the name, along with a timer, it means you cannot attack that spot until the time expires.<br><br>Then you choose a spot and click the icon on the far right that looks like a parking symbol to enter it. You will see parked mounts and players at the top.<br><br>In the bottom left, you have 3 icons: <b>Affixus, Guard, Plunder</b>:<br><br><b>Affixus</b> – Here you can watch battles in real time if someone is currently attacking the guards. <br><b>Guard</b> – Here you can check how other players are set up, their power, and decide whether to attack or not.<br><b>Plunder</b> – From here you can start an attack on that spot.<br>On the right side, there is also a scroll icon where you can view the battle history.<br>### <b>What should we check first and what to do</b><br><i>Now that we’ve gone over what each icon does, it’s time to move on to the main part.</i><br><br>First, go to the <b>Plunder</b> tab and check the players. Decide whether you can defeat them or not — they will be arranged exactly as you see them there when you attack. After each attack, the attacked player moves to the bottom of the list.<br>If you think you can beat them, attack. If not, don’t attack — wait for someone stronger than you to start. At the same time, if there are other available spots, you can check them as well and act where the conditions are better for you.<br><br><b>What to do if one of the enemy players is stronger than your strongest player:</b><br>Usually, the strongest players on a server stay in the first position almost all the time. The idea here is to give that strong enemy player a debuff from repeated wins so your top player can eventually defeat them.<br><br><b>Here’s how it works:</b><br>Let’s say the spot is defended by 6 players — one very strong and the rest weaker. One of your players enters and attacks the strongest one. After winning, that player gets a debuff and moves to the bottom of the lineup.<br><br>Then you don’t rush another attack — you wait. In most cases, that strong player will move back to the first position (because defenders can manually reposition themselves to the top).<br>Once that happens, another one of your players goes in and engage them again. Now they get a second debuff.<br><br>You repeat this cycle 3–4 times (even 5 to be safe), depending on the power difference between your top player and the target.<br>At the end, your strongest player goes in, defeat  them, and then the rest of your team follows up — everyone attacks and you take the spot.<br>Of course, if you can’t defeat anyone at all due to a big power gap, there’s no point in attacking.<br><b>Very important:</b><br>The debuff lasts <b>30 minutes</b>. Each time a new debuff is applied, the timer resets back to 30 minutes.<br>So coordination is key — organize your team before starting the attack to make it successful.<br><br><b>What to do if their strongest player does NOT return to the first position:</b><br>Carefully check if you can defeat the remaining players. If you can, go in and attack them one by one.<br>Eventually, you will reach the strong player again and can start applying debuffs to them.<br>This situation is a bit more complicated because it requires more people to be available — unless one of your players is strong enough to defeat  everyone alone.<br>Once you clear the weaker players and reach the strongest one, you repeat the same strategy: wait, attack one by one, stack enough debuffs, then send in your top player to finish them — and take the spot.
+<b>How to enter at parking war :</b><br>
+<i>Manor icon → Parking Wars → Find Parking Lot → Cross - server Spots</i><br><br>
+
+<b>What you will see, when you enter</b><br>
+You will see between 3 and 4 servers. Each server starts with its number — ours is <b>s30619</b>.<br>
+Under the name you will see how many parking spots are available.<br><br>
+
+Choose a server and click the icon to enter it.<br>
+Each spot shows:
+- Shield → defenders  
+- Swords → attackers<br><br>
+
+If you see <b>“In Peace”</b>, you cannot attack yet.<br><br>
+
+Click the parking icon to enter the spot.<br><br>
+
+<b>Options:</b><br>
+- <b>Affixus</b> – watch fights  
+- <b>Guard</b> – check players  
+- <b>Plunder</b> – attack<br><br>
+
+<h2>What should we check first and what to do</h2>
+
+First, go to <b>Plunder</b> and check enemies.<br>
+If you can beat them → attack.<br>
+If not → wait for stronger teammates.<br><br>
+
+<b>If enemy is stronger:</b><br>
+Use debuff strategy.<br><br>
+
+Example:<br>
+1. Attack strongest player  
+2. They get debuff  
+3. Wait  
+4. Repeat 3–5 times  
+5. Then send your strongest player<br><br>
+
+<b>Important:</b><br>
+Debuff lasts <b>30 minutes</b>.<br><br>
+
+<b>If strongest player doesn’t return:</b><br>
+Attack weaker ones first.<br>
+Then repeat the debuff cycle.<br>
   `,
   images: [
     "images/1.jpg",
@@ -14,19 +55,45 @@ const posts = [
   ]
 },
 
-
 {
   title: "test 2",
   category: "Jorad",
   cover: "images/1.jpg",
   content: `
-<b>Talents</b><br><b>PVP</b><br><i>Before you reach the feather count needed for end nodes you will want to follow it like this</i><br><br><ul><li>1. Start with Blue Fury branch and Yellow Archery branch. Get Combo DMG and Crit DMG and get these up to 10</li></ul><br><ul><li>2. Then go to Red Tamer and Blue Sorcery and start pushing Class Res and Crit Res and level these to 5.</li></ul><br><ul><li>3. Start pushing all the above doing 1 Crit/Class Res for every 2 Combo/Crit</li></ul><br><ul><li>4. You can then start adding in base ATK/HP when the above starts to get too costly</li></ul><br><pre><code><br>(While you may think getting all the base stasts would be the right move, they are suprisingly low bonuses in mid game and so I only recommend going for any when the main stats are too costly)<br><br>The steps above will eventually be your base with Res/Combo/Crit at 20/20, you will then add in extra stats the more feathers you have<br></code></pre><br><b>Other Stats with High Feather count:</b><br><pre><code><br>Energy Regen SPD - Ignore Combo - Ignore Counter - Evasion - Ignore Evasion (For 200+ Evasion players) - Combo Healing - Wound (Needed vs Tanks) - Healing<br></code></pre><br><br><b>PVE</b><br><i>Before you reach the feather count needed for end nodes you will want to follow it like this:</i><br><br>1. Start with Blue Fury branch and Yellow Archery branch. Get Combo DMG and Crit DMG and get these up to 10.<br>2. Then go to Blue Sorcery and start pushing Energy Regen SPD and level this to 5<br>3. Start pushing all the above doing 1 Energy Regen SPD for every 2 Combo/Crit<br>4. You can then start adding in base ATK when the above starts to get too costly<br><pre><code><br>(While you may think getting all the base stasts would be the right move, they are suprisingly low bonuses in mid game and so I only recommend going for any when the main stats are too costly)<br><br>The steps above will eventually be your base with SPD/Combo/Crit at 20/20, you will then add in extra stats the more feathers you have<br></code></pre><br><b>Other Stats with High Feather count:</b><br><pre><code><br>Evasion - Combo Healing - Healing - Skill Healing - Basic ATK Res<br></code></pre>
+<b>Talents</b><br>
+
+<b>PVP</b><br>
+<i>Follow this order:</i><br><br>
+
+1. Blue Fury + Yellow Archery → Combo DMG + Crit DMG (level 10)<br>
+2. Red Tamer + Blue Sorcery → Class Res + Crit Res (level 5)<br>
+3. Balance stats (2 attack stats : 1 defense stat)<br>
+4. Add base ATK/HP later<br><br>
+
+<pre><code>
+Main idea:
+Focus on Combo/Crit first,
+then add resistance and base stats later.
+</code></pre>
+
+<b>High level stats:</b><br>
+Energy Regen SPD, Ignore Combo, Evasion, Healing<br><br>
+
+<b>PVE</b><br>
+1. Combo + Crit first<br>
+2. Add Energy Regen SPD<br>
+3. Balance stats<br><br>
+
+<pre><code>
+Late game:
+SPD / Combo / Crit → 20/20
+Then expand further stats.
+</code></pre>
   `,
   images: [
     "images/2.jpg",
     "images/3.jpg"
   ]
-},
-
+}
 
 ];
