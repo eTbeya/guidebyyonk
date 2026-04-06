@@ -131,18 +131,9 @@ body {
 }
 
 @keyframes auraPulse {
-  0% {
-    transform: translateX(-50%) scale(0.9);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateX(-50%) scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50%) scale(0.9);
-    opacity: 0.6;
-  }
+  0% { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
+  50% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+  100% { transform: translateX(-50%) scale(0.9); opacity: 0.6; }
 }
 
 /* DIVIDER */
@@ -175,7 +166,7 @@ body {
   gap: 18px;
 }
 
-/* ===== CARD (UPGRADED) ===== */
+/* CARD */
 .card {
   position: relative;
   background: #111;
@@ -190,14 +181,12 @@ body {
     0 0 0 1px rgba(255,255,255,0.04);
 }
 
-/* IMAGE */
 .card img {
   width: 100%;
   height: 160px;
   object-fit: cover;
 }
 
-/* 🔥 IMAGE OVERLAY (GAME FEEL) */
 .card::after {
   content: "";
   position: absolute;
@@ -212,7 +201,6 @@ body {
   opacity: 0.9;
 }
 
-/* 🔥 GLOW BORDER */
 .card::before {
   content: "";
   position: absolute;
@@ -224,7 +212,6 @@ body {
   transition: 0.3s;
 }
 
-/* CONTENT */
 .card-content {
   position: absolute;
   bottom: 0;
@@ -237,17 +224,14 @@ body {
   font-size: 16px;
 }
 
-/* CATEGORY */
 .card-category {
   font-size: 12px;
   margin-top: 4px;
   color: rgba(255,255,255,0.7);
 }
 
-/* HOVER */
 .card:hover {
   transform: translateY(-6px) scale(1.02);
-
   box-shadow:
     0 0 25px rgba(0,240,255,0.3),
     0 0 40px rgba(255,0,200,0.2);
@@ -283,7 +267,6 @@ body {
   border-radius: 12px;
 }
 
-/* CLOSE */
 .close-btn {
   float: right;
   cursor: pointer;
@@ -295,120 +278,8 @@ body {
   line-height: 1.6;
 }
 
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  cursor: pointer;
-}
-
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  z-index: 9999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 10px;
-} 
-
-/* ===== MODAL UPGRADE ===== */
-
-/* Заглавие */
-.modal-content h2 {
-  margin-bottom: 15px;
-  font-size: 22px;
-
-  background: linear-gradient(90deg, #00f0ff, #ff00c8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Подзаглавия (PVP / PVE / High level stats) */
-.modal-content b {
-  display: block;
-  margin-top: 20px;
-  margin-bottom: 5px;
-
-  color: #00f0ff;
-  font-size: 16px;
-}
-
-/* Италици */
-.modal-content i {
-  color: rgba(255,255,255,0.6);
-}
-
-/* Списъци */
-.modal-content ul,
-.modal-content ol {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-/* Всеки ред */
-.modal-content li {
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-
-/* 🔥 CODE BLOCK / GUIDE BOX */
-.modal-content pre {
-  background: rgba(255,255,255,0.04);
-  padding: 12px;
-  border-radius: 10px;
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  box-shadow:
-    0 0 10px rgba(0,240,255,0.1),
-    0 0 20px rgba(255,0,200,0.05);
-
-  overflow-x: auto;
-}
-
-/* 🔥 ВАЖНИ секции */
-.modal-content .highlight {
-  margin: 15px 0;
-  padding: 12px;
-
-  border-left: 3px solid #ff00c8;
-
-  background: rgba(255,0,200,0.08);
-  border-radius: 8px;
-}
-
-/* 🔥 MAIN IDEA */
-.modal-content strong {
-  color: #ff00c8;
-}
-
-/* Малко spacing */
-.modal-content br {
-  display: block;
-  margin: 6px 0;
-}
-
-/* ===== POST IMAGES (ВАЖНО) ===== */
-
-.post-content img,
-.post-img {
+/* ===== POST IMAGES ===== */
+.post-content img {
   width: 100%;
   border-radius: 12px;
   margin: 15px 0;
@@ -422,11 +293,47 @@ body {
     0 0 20px rgba(255,0,200,0.1);
 }
 
-.post-content img:hover,
-.post-img:hover {
+.post-content img:hover {
   transform: scale(1.02);
+}
+
+/* ===== LIGHTBOX FINAL ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 9999;
+
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+}
+
+.lightbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle,
+    rgba(0,240,255,0.15),
+    rgba(255,0,200,0.1),
+    transparent 70%
+  );
+}
+
+.lightbox img {
+  max-width: 95vw;
+  max-height: 95vh;
+
+  object-fit: contain;
+
+  border-radius: 14px;
 
   box-shadow:
-    0 0 20px rgba(0,240,255,0.4),
-    0 0 30px rgba(255,0,200,0.25);
+    0 0 30px rgba(0,240,255,0.35),
+    0 0 60px rgba(255,0,200,0.25);
 }
