@@ -99,13 +99,20 @@ function openPost(post) {
     </div>
   `;
 
-  /* 🔥 ВСИЧКИ СНИМКИ → CLICK → LIGHTBOX */
+  /* 🔥 ВЗИМА ВСИЧКИ СНИМКИ */
+  const allImages = [
+    ...post.images,
+    ...Array.from(modalContent.querySelectorAll(".post-content img"))
+      .map(img => img.src)
+  ];
+
+  /* 🔥 CLICK НА ВСЯКА СНИМКА */
   modalContent.querySelectorAll("img").forEach(img => {
 
     img.style.cursor = "zoom-in";
 
     img.addEventListener("click", () => {
-      openLightbox(img.src);
+      openLightbox(img.src, allImages);
     });
   });
 }
@@ -124,17 +131,66 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-/* ================= LIGHTBOX ================= */
+/* ================= LIGHTBOX PRO ================= */
 
-function openLightbox(src) {
+let currentImages = [];
+let currentIndex = 0;
+
+function openLightbox(src, imagesArray = []) {
+
+  currentImages = imagesArray.length ? imagesArray : [src];
+  currentIndex = currentImages.indexOf(src);
+
+  if (currentIndex === -1) currentIndex = 0;
+
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
-  lb.innerHTML = `<img src="${src}">`;
-
-  lb.onclick = () => lb.remove();
+  lb.innerHTML = `
+    <img src="${currentImages[currentIndex]}" id="lightbox-img">
+  `;
 
   document.body.appendChild(lb);
+
+  const img = document.getElementById("lightbox-img");
+
+  /* CLOSE */
+  lb.onclick = () => {
+    lb.remove();
+    document.onkeydown = null;
+  };
+
+  /* SWIPE */
+  let startX = 0;
+
+  img.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  img.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (endX - startX > 50) prevImage(img);
+    if (startX - endX > 50) nextImage(img);
+  });
+
+  /* KEYBOARD */
+  document.onkeydown = (e) => {
+    if (e.key === "ArrowRight") nextImage(img);
+    if (e.key === "ArrowLeft") prevImage(img);
+  };
+}
+
+function nextImage(img) {
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  img.src = currentImages[currentIndex];
+}
+
+function prevImage(img) {
+  currentIndex =
+    (currentIndex - 1 + currentImages.length) % currentImages.length;
+
+  img.src = currentImages[currentIndex];
 }
 
 /* ================= INIT ================= */
