@@ -104,28 +104,26 @@ body {
   box-shadow: 0 0 10px #00f0ff;
 }
 
-/* 🔥 оправени мечове */
+/* ✅ FIXED (без двойно въртене) */
 .sword1 {
-  transform: rotate(-25deg) translateY(-60px);
   animation: spin 6s linear infinite;
 }
 
 .sword2 {
-  transform: rotate(25deg) translateY(-60px);
   animation: spinReverse 6s linear infinite;
 }
 
 @keyframes spin {
-  from { transform: rotate(-25deg) translateY(-60px); }
-  to { transform: rotate(335deg) translateY(-60px); }
+  from { transform: rotate(0deg) translateY(-60px); }
+  to { transform: rotate(360deg) translateY(-60px); }
 }
 
 @keyframes spinReverse {
-  from { transform: rotate(25deg) translateY(-60px); }
-  to { transform: rotate(-335deg) translateY(-60px); }
+  from { transform: rotate(360deg) translateY(-60px); }
+  to { transform: rotate(0deg) translateY(-60px); }
 }
 
-/* 🔥 DIVIDER (ъпгрейднат) */
+/* DIVIDER */
 .divider {
   width: 85%;
   height: 2px;
