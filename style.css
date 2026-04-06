@@ -120,11 +120,11 @@ body {
   to { transform: rotate(0deg) translateY(-60px); }
 }
 
-/* DIVIDER */
+/* 🔥 DIVIDER (НОВО) */
 .divider {
   width: 80%;
   height: 2px;
-  margin: 10px auto 20px auto;
+  margin: 0 auto 25px auto;
 
   background: linear-gradient(
     90deg,
@@ -142,7 +142,21 @@ body {
   animation: lineGlow 3s ease-in-out infinite alternate;
 }
 
-/* glow animation */
+.divider::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  margin: auto;
+
+  background: #fff;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #ff00c8;
+}
+
 @keyframes lineGlow {
   from {
     opacity: 0.5;
@@ -157,6 +171,8 @@ body {
 /* GRID */
 .grid {
   padding: 20px;
+  margin-top: 10px; /* 🔥 малко разстояние от divider */
+
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
   gap: 15px;
