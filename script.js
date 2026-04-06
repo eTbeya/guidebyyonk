@@ -6,15 +6,8 @@ const categoryNav = document.getElementById("categoryNav");
 
 let activeCategory = "all";
 
-/* INIT SAFE */
-if (typeof posts === "undefined") {
-  grid.innerHTML = "<p>ERROR: posts.js not loaded</p>";
-}
-
 /* CATEGORIES */
 function generateCategories() {
-  if (!posts) return;
-
   const categories = [...new Set(posts.map(p => p.category))];
 
   categoryNav.innerHTML = "";
@@ -53,15 +46,13 @@ function setActive(el) {
 
 /* POSTS */
 function renderPosts() {
-  if (!posts) return;
-
   const search = searchInput.value.toLowerCase();
   grid.innerHTML = "";
 
   posts.forEach(post => {
     if (
       !post.title.toLowerCase().includes(search) &&
-      !post.content.toLowerCase().includes(search)
+      !(post.content || "").toLowerCase().includes(search)
     ) return;
 
     if (activeCategory !== "all" && post.category !== activeCategory) return;
@@ -87,10 +78,13 @@ function openPost(post) {
   modalContent.innerHTML = `
     <span class="close-btn" onclick="closeModal()">X</span>
     <h2>${post.title}</h2>
+
     <div class="post-content">${post.content}</div>
 
     <div class="gallery">
-      ${post.images.map(img => `<img src="${img}">`).join("")}
+      ${post.images.map(img => `
+        <img src="${img}" onclick="openLightbox('${img}')">
+      `).join("")}
     </div>
   `;
 }
@@ -102,6 +96,18 @@ function closeModal() {
 modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
+
+/* LIGHTBOX */
+function openLightbox(src) {
+  const lb = document.createElement("div");
+  lb.className = "lightbox";
+
+  lb.innerHTML = `<img src="${src}">`;
+
+  lb.onclick = () => lb.remove();
+
+  document.body.appendChild(lb);
+}
 
 /* INIT */
 searchInput.oninput = renderPosts;
