@@ -329,3 +329,29 @@ select:focus {
 .category-item.active::after {
   width: 100%;
 }
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.1);
+  box-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #ff00c8;
+}
+
+/* swipe smooth */
+.modal-content {
+  transition: transform 0.2s ease;
+}
