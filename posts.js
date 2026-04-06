@@ -6,8 +6,8 @@ const posts = [
   cover: "images/3.jpg",
   content: `
 
-<b>How to enter Parking War</b>
-<i>Manor → Parking Wars → Find Parking Lot → Cross server</i>
+<b>How to enter Parking War</b><br>
+<i>Manor → Parking Wars → Find Parking Lot → Cross server</i><br><br>
 
 <b>What you will see</b>
 <ul>
@@ -34,7 +34,9 @@ If you see <b>“In Peace”</b> → you cannot attack yet.
 </ul>
 
 <h2>Strategy</h2>
-<img src="images/1.jpg" style="width:100%; border-radius:10px; margin:10px 0;"> 
+
+<img src="images/1.jpg" class="post-img">
+
 Go to <b>Plunder</b> and evaluate enemies:
 <ul>
   <li>If you can win → attack</li>
@@ -73,10 +75,10 @@ Debuff duration: <b>30 minutes</b>
   cover: "images/1.jpg",
   content: `
 
-<b>Talents</b>
+<b>Talents</b><br><br>
 
-<b>PVP</b>
-<i>Follow this order:</i>
+<b>PVP</b><br>
+<i>Follow this order:</i><br><br>
 
 <ol>
   <li>Blue Fury + Yellow Archery → Combo DMG + Crit DMG (lvl 10)</li>
@@ -97,7 +99,8 @@ Evasion
 Healing
 </pre>
 
-<b>PVE</b>
+<b>PVE</b><br><br>
+
 <ol>
   <li>Combo + Crit first</li>
   <li>Add Energy Regen SPD</li>
