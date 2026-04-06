@@ -71,6 +71,7 @@ body {
     0 0 20px #ff00c8;
 
   animation: glow 3s infinite alternate;
+
   position: relative;
   z-index: 2;
 }
@@ -88,70 +89,41 @@ body {
   }
 }
 
-/* 🔥 NEON LINES EFFECT */
-.neon-lines {
+/* 🔥 GLOW AURA */
+.glow-bg {
   position: absolute;
   width: 260px;
   height: 120px;
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  pointer-events: none;
+  z-index: 1;
+
+  background: radial-gradient(
+    circle,
+    rgba(0,240,255,0.25),
+    rgba(255,0,200,0.2),
+    transparent 70%
+  );
+
+  filter: blur(25px);
+  opacity: 0.8;
+
+  animation: auraPulse 4s ease-in-out infinite;
 }
 
-.line {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-
-  background: linear-gradient(90deg, transparent, #00f0ff, #ff00c8, transparent);
-
-  box-shadow:
-    0 0 10px #00f0ff,
-    0 0 20px #ff00c8;
-
-  opacity: 0.7;
-}
-
-/* top line */
-.line-top {
-  top: 0;
-  animation: pulseTop 3s ease-in-out infinite;
-}
-
-/* bottom line */
-.line-bottom {
-  bottom: 0;
-  animation: pulseBottom 3s ease-in-out infinite;
-}
-
-@keyframes pulseTop {
+@keyframes auraPulse {
   0% {
-    transform: scaleX(0.7);
-    opacity: 0.4;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.6;
   }
   50% {
-    transform: scaleX(1.1);
+    transform: translateX(-50%) scale(1.1);
     opacity: 1;
   }
   100% {
-    transform: scaleX(0.7);
-    opacity: 0.4;
-  }
-}
-
-@keyframes pulseBottom {
-  0% {
-    transform: scaleX(1.1);
-    opacity: 1;
-  }
-  50% {
-    transform: scaleX(0.7);
-    opacity: 0.4;
-  }
-  100% {
-    transform: scaleX(1.1);
-    opacity: 1;
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.6;
   }
 }
 
