@@ -94,25 +94,26 @@ function openPost(post) {
 
     <div class="gallery">
       ${post.images.map(img => `
-        <img src="${img}" class="gallery-img">
+        <img src="${img}">
       `).join("")}
     </div>
   `;
 
-  /* 🔥 ВЗИМА ВСИЧКИ СНИМКИ */
-  const allImages = [
-    ...post.images,
-    ...Array.from(modalContent.querySelectorAll(".post-content img"))
-      .map(img => img.src)
-  ];
+  /* 🔥 СЪБИРАМЕ ВСИЧКИ СНИМКИ */
+  const allImages = [];
+  const images = modalContent.querySelectorAll("img");
 
-  /* 🔥 CLICK НА ВСЯКА СНИМКА */
-  modalContent.querySelectorAll("img").forEach(img => {
+  images.forEach(img => {
+    allImages.push(img.src);
+  });
+
+  /* 🔥 CLICK */
+  images.forEach((img, index) => {
 
     img.style.cursor = "zoom-in";
 
     img.addEventListener("click", () => {
-      openLightbox(img.src, allImages);
+      openLightbox(index, allImages);
     });
   });
 }
@@ -131,17 +132,15 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-/* ================= LIGHTBOX PRO ================= */
+/* ================= LIGHTBOX ================= */
 
 let currentImages = [];
 let currentIndex = 0;
 
-function openLightbox(src, imagesArray = []) {
+function openLightbox(startIndex, imagesArray) {
 
-  currentImages = imagesArray.length ? imagesArray : [src];
-  currentIndex = currentImages.indexOf(src);
-
-  if (currentIndex === -1) currentIndex = 0;
+  currentImages = imagesArray;
+  currentIndex = startIndex;
 
   const lb = document.createElement("div");
   lb.className = "lightbox";
@@ -198,4 +197,4 @@ function prevImage(img) {
 searchInput.oninput = renderPosts;
 
 generateCategories();
-renderPosts();
+renderPosts(); 
