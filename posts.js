@@ -118,6 +118,18 @@ Then expand stats further
     "images/2.jpg",
     "images/3.jpg"
   ]
-}
+}, 
+
+
+{
+  title: "Test guide",
+  category: "Jorad 2",
+  cover: "images/1.jpg",
+  content: `
+<b>Jorad , this its how look the generator fo guide</b><br><br><img src="images/2.jpg" class="post-img"><br><br><b><i>Its so easy for use</b></i>
+  `,
+  images: []
+},
+
 
 ];
