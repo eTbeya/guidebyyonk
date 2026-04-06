@@ -146,7 +146,9 @@ function openLightbox(startIndex, imagesArray) {
   lb.className = "lightbox";
 
   lb.innerHTML = `
+    <span class="lb-arrow left">&#10094;</span>
     <img src="${currentImages[currentIndex]}" id="lightbox-img">
+    <span class="lb-arrow right">&#10095;</span>
   `;
 
   document.body.appendChild(lb);
@@ -154,9 +156,22 @@ function openLightbox(startIndex, imagesArray) {
   const img = document.getElementById("lightbox-img");
 
   /* CLOSE */
-  lb.onclick = () => {
-    lb.remove();
-    document.onkeydown = null;
+  lb.onclick = (e) => {
+    if (e.target === lb) {
+      lb.remove();
+      document.onkeydown = null;
+    }
+  };
+
+  /* ARROWS CLICK */
+  lb.querySelector(".left").onclick = (e) => {
+    e.stopPropagation();
+    prevImage(img);
+  };
+
+  lb.querySelector(".right").onclick = (e) => {
+    e.stopPropagation();
+    nextImage(img);
   };
 
   /* SWIPE */
