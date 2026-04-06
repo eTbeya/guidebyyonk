@@ -41,9 +41,11 @@ body {
 .category-item {
   cursor: pointer;
   opacity: 0.6;
+  transition: 0.2s;
 }
 
-.category-item.active {
+.category-item.active,
+.category-item:hover {
   opacity: 1;
 }
 
@@ -55,7 +57,7 @@ body {
   position: relative;
 }
 
-/* LOGO EFFECT */
+/* LOGO */
 .logo {
   font-size: 38px;
   font-weight: bold;
@@ -102,29 +104,32 @@ body {
   box-shadow: 0 0 10px #00f0ff;
 }
 
+/* 🔥 оправени мечове */
 .sword1 {
+  transform: rotate(-25deg) translateY(-60px);
   animation: spin 6s linear infinite;
 }
 
 .sword2 {
+  transform: rotate(25deg) translateY(-60px);
   animation: spinReverse 6s linear infinite;
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg) translateY(-60px); }
-  to { transform: rotate(360deg) translateY(-60px); }
+  from { transform: rotate(-25deg) translateY(-60px); }
+  to { transform: rotate(335deg) translateY(-60px); }
 }
 
 @keyframes spinReverse {
-  from { transform: rotate(360deg) translateY(-60px); }
-  to { transform: rotate(0deg) translateY(-60px); }
+  from { transform: rotate(25deg) translateY(-60px); }
+  to { transform: rotate(-335deg) translateY(-60px); }
 }
 
-/* 🔥 DIVIDER (НОВО) */
+/* 🔥 DIVIDER (ъпгрейднат) */
 .divider {
-  width: 80%;
+  width: 85%;
   height: 2px;
-  margin: 0 auto 25px auto;
+  margin: 20px auto 30px auto;
 
   background: linear-gradient(
     90deg,
@@ -136,10 +141,13 @@ body {
   );
 
   box-shadow:
-    0 0 10px #00f0ff,
-    0 0 20px #ff00c8;
+    0 0 8px #00f0ff,
+    0 0 15px #ff00c8,
+    0 0 25px rgba(255,0,200,0.3);
 
-  animation: lineGlow 3s ease-in-out infinite alternate;
+  border-radius: 10px;
+
+  animation: lineGlow 2.5s ease-in-out infinite alternate;
 }
 
 .divider::after {
@@ -171,7 +179,7 @@ body {
 /* GRID */
 .grid {
   padding: 20px;
-  margin-top: 10px; /* 🔥 малко разстояние от divider */
+  margin-top: 10px;
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
@@ -184,11 +192,14 @@ body {
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .card:hover {
   transform: scale(1.03);
+  box-shadow:
+    0 0 15px rgba(0,240,255,0.3),
+    0 0 25px rgba(255,0,200,0.2);
 }
 
 .card img {
