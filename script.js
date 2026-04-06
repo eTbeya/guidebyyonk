@@ -88,7 +88,6 @@ function openPost(post) {
     </div>
   `;
 
-  // 👉 ТУК е ключът
   document.querySelectorAll(".gallery-img").forEach(img => {
     img.addEventListener("click", () => {
       openLightbox(img.src);
@@ -100,18 +99,25 @@ function closeModal() {
   modal.style.display = "none";
 }
 
+/* CLICK OUTSIDE */
 modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
 
-/* LIGHTBOX */
+/* LIGHTBOX FIX */
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
   lb.innerHTML = `<img src="${src}">`;
 
-  lb.onclick = () => lb.remove();
+  // скриваме поста
+  modal.style.display = "none";
+
+  lb.onclick = () => {
+    lb.remove();
+    modal.style.display = "flex";
+  };
 
   document.body.appendChild(lb);
 }
