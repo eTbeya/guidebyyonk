@@ -309,10 +309,12 @@ body {
 }
 
 .lightbox img {
-  max-width: 95vw;
-  max-height: 95vh;
-  object-fit: contain;
-  border-radius: 14px;
+  width: 100vw;
+  height: 100vh;
+
+  object-fit: contain; /* или cover ако искаш да пълни изцяло */
+
+  border-radius: 0;
 }
 
 /* ===== ARROWS ===== */
