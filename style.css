@@ -267,111 +267,66 @@ body {
   border-radius: 12px;
 }
 
-.close-btn {
-  float: right;
-  cursor: pointer;
-  font-size: 22px;
+/* ===== ГАЛЕРИЯ FIX ===== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
 }
 
-/* TEXT */
-.post-content {
-  line-height: 1.6;
-}
-
-/* ===== POST IMAGES ===== */
-.post-content img {
+.gallery img {
   width: 100%;
-  border-radius: 12px;
-  margin: 15px 0;
+  aspect-ratio: 1 / 1;
 
-  cursor: zoom-in;
+  object-fit: cover;
 
-  transition: 0.3s;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.25s;
 
   box-shadow:
     0 0 10px rgba(0,240,255,0.2),
-    0 0 20px rgba(255,0,200,0.1);
+    0 0 15px rgba(255,0,200,0.1);
 }
 
-.post-content img:hover {
-  transform: scale(1.02);
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
-/* ===== LIGHTBOX FINAL ===== */
+/* ===== LIGHTBOX ===== */
 .lightbox {
   position: fixed;
   inset: 0;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 9999;
-
   background: rgba(0,0,0,0.85);
   backdrop-filter: blur(12px);
-}
-
-.lightbox::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle,
-    rgba(0,240,255,0.15),
-    rgba(255,0,200,0.1),
-    transparent 70%
-  );
 }
 
 .lightbox img {
   max-width: 95vw;
   max-height: 95vh;
-
   object-fit: contain;
-
   border-radius: 14px;
-
-  box-shadow:
-    0 0 30px rgba(0,240,255,0.35),
-    0 0 60px rgba(255,0,200,0.25);
 }
 
-/* ===== LIGHTBOX ARROWS ===== */
-
+/* ===== ARROWS ===== */
 .lb-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
   font-size: 40px;
   color: white;
-
   cursor: pointer;
-  user-select: none;
-
   padding: 10px 15px;
   border-radius: 10px;
-
   background: rgba(0,0,0,0.4);
-
-  transition: 0.2s;
-
-  z-index: 10;
 }
 
-.lb-arrow:hover {
-  background: rgba(0,240,255,0.3);
-  box-shadow:
-    0 0 10px #00f0ff,
-    0 0 20px #ff00c8;
-}
-
-.lb-arrow.left {
-  left: 20px;
-}
-
-.lb-arrow.right {
-  right: 20px;
-}
+.lb-arrow.left { left: 20px; }
+.lb-arrow.right { right: 20px; } 
