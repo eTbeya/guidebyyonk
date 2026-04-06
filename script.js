@@ -6,7 +6,7 @@ const categoryNav = document.getElementById("categoryNav");
 
 let activeCategory = "all";
 
-/* ---------------- CATEGORIES ---------------- */
+/* ---------- CATEGORIES ---------- */
 
 function generateCategories() {
   const categories = [...new Set(posts.map(p => p.category))];
@@ -16,7 +16,6 @@ function generateCategories() {
   const all = document.createElement("div");
   all.textContent = "All";
   all.className = "category-item active";
-
   all.onclick = () => {
     activeCategory = "all";
     setActive(all);
@@ -43,15 +42,13 @@ function generateCategories() {
 function setActive(el) {
   document.querySelectorAll(".category-item")
     .forEach(i => i.classList.remove("active"));
-
   el.classList.add("active");
 }
 
-/* ---------------- POSTS ---------------- */
+/* ---------- POSTS ---------- */
 
 function renderPosts() {
   const search = searchInput.value.toLowerCase();
-
   grid.innerHTML = "";
 
   posts.forEach(post => {
@@ -68,9 +65,8 @@ function renderPosts() {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${post.cover}" />
+      <img src="${post.cover}">
       <h3>${post.title}</h3>
-      <p>${post.category}</p>
     `;
 
     card.onclick = () => openPost(post);
@@ -79,63 +75,51 @@ function renderPosts() {
   });
 }
 
-/* ---------------- MODAL ---------------- */
+/* ---------- MODAL ---------- */
 
 function openPost(post) {
   modal.style.display = "flex";
 
   modalContent.innerHTML = `
-    <div class="modal-header">
-      <span class="close-btn" onclick="closeModal()">✕</span>
-      <h2>${post.title}</h2>
-    </div>
+    <span class="close-btn" onclick="closeModal()">✕</span>
+    <h2>${post.title}</h2>
 
     <div class="post-content">${post.content}</div>
 
-    <div class="gallery ${post.images.length === 1 ? 'single' : ''}">
+    <div class="gallery">
       ${post.images.map(img => `
-        <img src="${img}" onclick="openLightbox('${img}')"/>
+        <img src="${img}" onclick="openLightbox('${img}')">
       `).join("")}
     </div>
   `;
-
-  modalContent.style.transform = "translateY(0)";
 }
 
 function closeModal() {
   modal.style.display = "none";
-  modalContent.style.transform = "translateY(0)";
 }
 
 /* click outside */
-modal.addEventListener("click", (e) => {
+modal.onclick = (e) => {
   if (e.target === modal) closeModal();
-});
+};
 
-/* ESC */
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeModal();
-});
-
-
-/* ---------------- LIGHTBOX ---------------- */
+/* ---------- LIGHTBOX ---------- */
 
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
-  lb.innerHTML = `<img src="${src}" />`;
-
+  lb.innerHTML = `<img src="${src}">`;
   lb.onclick = () => lb.remove();
 
   document.body.appendChild(lb);
 }
 
-/* ---------------- EVENTS ---------------- */
+/* ---------- EVENTS ---------- */
 
 searchInput.oninput = renderPosts;
 
-/* ---------------- INIT ---------------- */
+/* ---------- INIT ---------- */
 
 generateCategories();
 renderPosts();
