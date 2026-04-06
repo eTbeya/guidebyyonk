@@ -210,11 +210,10 @@ body {
   padding-right: 50px;
 }
 
-/* CLOSE BUTTON */
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  position: fixed; /* ключът */
+  top: 15px;
+  right: 15px;
 
   font-size: 26px;
   font-weight: bold;
@@ -222,13 +221,13 @@ body {
   cursor: pointer;
   color: white;
 
-  z-index: 1000;
+  z-index: 9999; /* над всичко */
 
-  padding: 6px 10px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
 
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
 
   transition: 0.2s;
 }
@@ -239,6 +238,7 @@ body {
     0 0 10px #00f0ff,
     0 0 20px #ff00c8;
 }
+
 
 /* GALLERY */
 .gallery {
