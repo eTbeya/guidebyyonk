@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Generator</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: radial-gradient(circle at top, #1a1a2e, #0a0a12);
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  text-shadow:
+    0 0 10px #00f0ff,
+    0 0 20px #ff00c8;
+}
+
+.box {
+  background: rgba(255,255,255,0.03);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+textarea {
+  height: 180px;
+}
+
+/* toolbar */
+.toolbar button {
+  margin: 5px;
+}
+
+/* preview */
+.preview-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.6);
+}
+
+#preview img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* images list */
+.img-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(45deg, #00f0ff, #ff00c8);
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+pre {
+  background: #000;
+  color: #0f0;
+  padding: 15px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>⚡ Post Generator</h1>
+
+<div class="box">
+  <input id="title" placeholder="Title">
+  <input id="category" placeholder="Category">
+  <input id="cover" placeholder="Cover (images/x.jpg)">
+</div>
+
+<div class="box">
+
+  <div class="toolbar">
+    <button onclick="wrap('**')">Bold</button>
+    <button onclick="wrap('*')">Italic</button>
+    <button onclick="wrap('# ')">H1</button>
+    <button onclick="wrap('## ')">H2</button>
+    <button onclick="addList()">List</button>
+    <button onclick="addCode()">Code</button>
+    <button onclick="addImage()">Image</button>
+  </div>
+
+  <textarea id="content" placeholder="Write here (Markdown supported)..."></textarea>
+
+  <div class="preview-box">
+    <h3>Preview</h3>
+    <div id="preview"></div>
+  </div>
+
+</div>
+
+<div class="box">
+  <h3>Images</h3>
+  <input id="imgInput" placeholder="images/example.jpg">
+  <button onclick="addImageToList()">Add</button>
+
+  <div id="imagesList"></div>
+</div>
+
+<div class="box">
+  <button onclick="generate()">⚡ Generate</button>
+  <button onclick="copy()">📋 Copy</button>
+</div>
+
+<div class="box">
+  <h3>Output</h3>
+  <pre id="output"></pre>
+</div>
+
+</div>
+
+<script>
+
+let images = [];
+
+/* ---------- EDITOR ---------- */
+
+function wrap(symbol) {
+  const textarea = document.getElementById("content");
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selected = textarea.value.substring(start, end);
+
+  textarea.setRangeText(symbol + selected + symbol);
+}
+
+function addList() {
+  const textarea = document.getElementById("content");
+  textarea.value += "\n- Item 1\n- Item 2\n";
+}
+
+function addCode() {
+  const textarea = document.getElementById("content");
+  textarea.value += "\n```\ncode here\n```\n";
+}
+
+function addImage() {
+  const textarea = document.getElementById("content");
+  const url = prompt("Image path (images/x.jpg):");
+  if (!url) return;
+
+  textarea.value += `\n<img src="${url}">\n`;
+}
+
+/* ---------- IMAGE LIST ---------- */
+
+function addImageToList() {
+  const input = document.getElementById("imgInput");
+  if (!input.value) return;
+
+  images.push(input.value);
+  input.value = "";
+  renderImages();
+}
+
+function renderImages() {
+  const list = document.getElementById("imagesList");
+  list.innerHTML = "";
+
+  images.forEach((img, i) => {
+    list.innerHTML += `
+      <div class="img-item">
+        <span>${img}</span>
+        <button onclick="removeImg(${i})">X</button>
+      </div>
+    `;
+  });
+}
+
+function removeImg(i) {
+  images.splice(i,1);
+  renderImages();
+}
+
+/* ---------- MARKDOWN ---------- */
+
+function markdownToHTML(text) {
+
+  text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  text = text.replace(/^# (.*$)/gim, "<h1>$1</h1>");
+  text = text.replace(/^## (.*$)/gim, "<h2>$1</h2>");
+
+  text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+  text = text.replace(/\*(.*?)\*/g, "<i>$1</i>");
+
+  text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
+
+  text = text.replace(/^\- (.*$)/gim, "<li>$1</li>");
+  text = text.replace(/(<li>.*<\/li>)/gim, "<ul>$1</ul>");
+
+  text = text.replace(/(https?:\/\/.*\.(png|jpg|jpeg|gif))/g, '<img src="$1">');
+
+  text = text.replace(/\n/g, "<br>");
+
+  return text;
+}
+
+/* ---------- LIVE PREVIEW ---------- */
+
+const contentInput = document.getElementById("content");
+const preview = document.getElementById("preview");
+
+contentInput.addEventListener("input", () => {
+  preview.innerHTML = markdownToHTML(contentInput.value);
+});
+
+/* ---------- GENERATE ---------- */
+
+function generate() {
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+  const cover = document.getElementById("cover").value;
+
+  const content = markdownToHTML(
+    document.getElementById("content").value
+  );
+
+  const imgFormatted = images.map(i => `"${i}"`).join(",\n    ");
+
+  const code = `
+{
+  title: "${title}",
+  category: "${category}",
+  cover: "${cover}",
+  content: \`
+${content}
+  \`,
+  images: [
+    ${imgFormatted}
+  ]
+},
+`;
+
+  document.getElementById("output").textContent = code;
+}
+
+function copy() {
+  navigator.clipboard.writeText(
+    document.getElementById("output").textContent
+  );
+}
+
+</script>
+
+</body>
+</html>
