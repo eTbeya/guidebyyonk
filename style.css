@@ -404,3 +404,29 @@ body {
   display: block;
   margin: 6px 0;
 }
+
+/* ===== POST IMAGES (ВАЖНО) ===== */
+
+.post-content img,
+.post-img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 15px 0;
+
+  cursor: zoom-in;
+
+  transition: 0.3s;
+
+  box-shadow:
+    0 0 10px rgba(0,240,255,0.2),
+    0 0 20px rgba(255,0,200,0.1);
+}
+
+.post-content img:hover,
+.post-img:hover {
+  transform: scale(1.02);
+
+  box-shadow:
+    0 0 20px rgba(0,240,255,0.4),
+    0 0 30px rgba(255,0,200,0.25);
+}
