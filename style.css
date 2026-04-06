@@ -366,3 +366,12 @@ body {
   }
 
 }
+
+.modal {
+  overscroll-behavior: contain;
+  touch-action: none;
+}
+
+.modal-content {
+  touch-action: pan-y;
+}
