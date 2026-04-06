@@ -31,7 +31,7 @@ body {
   border: none;
 }
 
-/* CATEGORY */
+/* CATEGORY NAV */
 .category-nav {
   display: flex;
   gap: 15px;
@@ -89,7 +89,7 @@ body {
   }
 }
 
-/* 🔥 GLOW AURA */
+/* GLOW AURA */
 .glow-bg {
   position: absolute;
   width: 260px;
@@ -173,12 +173,47 @@ body {
     0 0 25px rgba(255,0,200,0.2);
 }
 
-.card img {
+/* IMAGE WRAP (ВАЖНО) */
+.card-img-wrap {
+  position: relative;
+}
+
+/* IMAGE */
+.card-img-wrap img {
   width: 100%;
   height: 150px;
   object-fit: cover;
+  display: block;
 }
 
+/* 🔥 CATEGORY BADGE (FIXED) */
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  z-index: 10; /* 🔥 това го оправя */
+
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+
+  border-radius: 20px;
+  color: white;
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow:
+    0 0 8px rgba(0,240,255,0.4),
+    0 0 12px rgba(255,0,200,0.3);
+
+  letter-spacing: 0.5px;
+}
+
+/* TITLE */
 .card h3 {
   padding: 10px;
 }
@@ -252,33 +287,4 @@ body {
   max-width: 90%;
   max-height: 90%;
   border-radius: 10px;
-}
-
-/* 🔥 CATEGORY BADGE (НА КАРТИТЕ) */
-.card-img-wrap {
-  position: relative;
-}
-
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-
-  padding: 5px 12px;
-  font-size: 12px;
-  font-weight: 600;
-
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-
-  border-radius: 20px;
-  color: white;
-
-  border: 1px solid rgba(255,255,255,0.1);
-
-  box-shadow:
-    0 0 8px rgba(0,240,255,0.4),
-    0 0 12px rgba(255,0,200,0.3);
-
-  letter-spacing: 0.5px;
 }
