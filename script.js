@@ -6,7 +6,7 @@ const categoryNav = document.getElementById("categoryNav");
 
 let activeCategory = "all";
 
-/* ---------- CATEGORIES ---------- */
+/* CATEGORIES */
 function generateCategories() {
   const categories = [...new Set(posts.map(p => p.category))];
 
@@ -44,20 +44,18 @@ function setActive(el) {
   el.classList.add("active");
 }
 
-/* ---------- POSTS ---------- */
+/* POSTS */
 function renderPosts() {
   const search = searchInput.value.toLowerCase();
   grid.innerHTML = "";
 
   posts.forEach(post => {
-    const matchSearch =
-      post.title.toLowerCase().includes(search) ||
-      post.content.toLowerCase().includes(search);
+    if (
+      !post.title.toLowerCase().includes(search) &&
+      !post.content.toLowerCase().includes(search)
+    ) return;
 
-    const matchCategory =
-      activeCategory === "all" || post.category === activeCategory;
-
-    if (!matchSearch || !matchCategory) return;
+    if (activeCategory !== "all" && post.category !== activeCategory) return;
 
     const card = document.createElement("div");
     card.className = "card";
@@ -73,20 +71,17 @@ function renderPosts() {
   });
 }
 
-/* ---------- MODAL ---------- */
+/* MODAL */
 function openPost(post) {
   modal.style.display = "flex";
 
   modalContent.innerHTML = `
-    <span class="close-btn" onclick="closeModal()">✕</span>
+    <span class="close-btn" onclick="closeModal()">X</span>
     <h2>${post.title}</h2>
-
     <div class="post-content">${post.content}</div>
 
     <div class="gallery">
-      ${post.images.map(img => `
-        <img src="${img}" onclick="openLightbox('${img}')">
-      `).join("")}
+      ${post.images.map(img => `<img src="${img}">`).join("")}
     </div>
   `;
 }
@@ -95,21 +90,15 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-/* click outside */
 modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
 
-/* ---------- LIGHTBOX ---------- */
-function openLightbox(src) {
-  const lb = document.createElement("div");
-  lb.className = "lightbox";
+/* INIT */
+searchInput.oninput = renderPosts;
 
-  lb.innerHTML = `<img src="${src}">`;
-  lb.onclick = () => lb.remove();
-
-  document.body.appendChild(lb);
-}
+generateCategories();
+renderPosts();}
 
 /* ---------- EVENTS ---------- */
 searchInput.oninput = renderPosts;
