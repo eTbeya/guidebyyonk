@@ -60,8 +60,12 @@ function renderPosts() {
     const card = document.createElement("div");
     card.className = "card";
 
+    // 🔥 UPDATED CARD (с категория)
     card.innerHTML = `
-      <img src="${post.cover}">
+      <div class="card-img-wrap">
+        <img src="${post.cover}">
+        <span class="card-category">${post.category}</span>
+      </div>
       <h3>${post.title}</h3>
     `;
 
@@ -104,14 +108,13 @@ modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
 
-/* LIGHTBOX FIX */
+/* LIGHTBOX */
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
   lb.innerHTML = `<img src="${src}">`;
 
-  // скриваме поста
   modal.style.display = "none";
 
   lb.onclick = () => {
