@@ -4,6 +4,7 @@ body {
   background: radial-gradient(circle at top, #1a1a2e, #0a0a12);
   color: white;
   overflow-x: hidden;
+   overscroll-behavior: none;
 }
 
 /* HERO */
