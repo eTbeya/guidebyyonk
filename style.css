@@ -89,7 +89,7 @@ body {
   }
 }
 
-/* GLOW AURA */
+/* GLOW BACKGROUND */
 .glow-bg {
   position: absolute;
   width: 260px;
@@ -173,49 +173,29 @@ body {
     0 0 25px rgba(255,0,200,0.2);
 }
 
-/* IMAGE WRAP (ВАЖНО) */
-.card-img-wrap {
-  position: relative;
-}
-
-/* IMAGE */
-.card-img-wrap img {
+.card img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  display: block;
 }
 
-/* 🔥 CATEGORY BADGE (FIXED) */
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-
-  z-index: 10; /* 🔥 това го оправя */
-
-  padding: 5px 12px;
-  font-size: 12px;
-  font-weight: 600;
-
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(6px);
-
-  border-radius: 20px;
-  color: white;
-
-  border: 1px solid rgba(255,255,255,0.15);
-
-  box-shadow:
-    0 0 8px rgba(0,240,255,0.4),
-    0 0 12px rgba(255,0,200,0.3);
-
-  letter-spacing: 0.5px;
-}
-
-/* TITLE */
-.card h3 {
+/* CARD CONTENT */
+.card-content {
   padding: 10px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* 🔥 CATEGORY UNDER TITLE */
+.card-category {
+  font-size: 12px;
+  margin-top: 4px;
+
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.5px;
 }
 
 /* MODAL */
