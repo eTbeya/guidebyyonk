@@ -3,18 +3,16 @@ const modal = document.getElementById("modal");
 const modalContent = document.getElementById("modalContent");
 const searchInput = document.getElementById("search");
 const categoryNav = document.getElementById("categoryNav");
-let activeCategory = "all";
-function slugify(text) {
-  return text.toLowerCase().replace(/\s+/g, "-");
-}
 
-// Генериране на категории
+let activeCategory = "all";
+
+/* ---------------- CATEGORIES ---------------- */
+
 function generateCategories() {
   const categories = [...new Set(posts.map(p => p.category))];
 
   categoryNav.innerHTML = "";
 
-  // ALL бутон
   const all = document.createElement("div");
   all.textContent = "All";
   all.className = "category-item active";
@@ -41,13 +39,16 @@ function generateCategories() {
     categoryNav.appendChild(el);
   });
 }
+
 function setActive(el) {
   document.querySelectorAll(".category-item")
     .forEach(i => i.classList.remove("active"));
 
   el.classList.add("active");
 }
-// Рендер постове
+
+/* ---------------- POSTS ---------------- */
+
 function renderPosts() {
   const search = searchInput.value.toLowerCase();
 
@@ -59,7 +60,7 @@ function renderPosts() {
       post.content.toLowerCase().includes(search);
 
     const matchCategory =
-  activeCategory === "all" || post.category === activeCategory;
+      activeCategory === "all" || post.category === activeCategory;
 
     if (!matchSearch || !matchCategory) return;
 
@@ -78,28 +79,80 @@ function renderPosts() {
   });
 }
 
-// Отваряне на пост
+/* ---------------- MODAL ---------------- */
+
 function openPost(post) {
   modal.style.display = "flex";
 
   modalContent.innerHTML = `
-    <h2>${post.title}</h2>
+    <div class="modal-header">
+      <span class="close-btn" onclick="closeModal()">✕</span>
+      <h2>${post.title}</h2>
+    </div>
+
     <div class="post-content">${post.content}</div>
 
-    <div class="gallery">
+    <div class="gallery ${post.images.length === 1 ? 'single' : ''}">
       ${post.images.map(img => `
         <img src="${img}" onclick="openLightbox('${img}')"/>
       `).join("")}
     </div>
   `;
+
+  modalContent.style.transform = "translateY(0)";
 }
 
-// Затваряне
-modal.onclick = (e) => {
-  if (e.target === modal) modal.style.display = "none";
-};
+function closeModal() {
+  modal.style.display = "none";
+  modalContent.style.transform = "translateY(0)";
+}
 
-// Lightbox
+/* click outside */
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+});
+
+/* ESC */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+
+/* ---------------- SWIPE DOWN ---------------- */
+
+let startY = 0;
+let currentY = 0;
+let isDragging = false;
+
+modalContent.addEventListener("touchstart", (e) => {
+  startY = e.touches[0].clientY;
+  isDragging = true;
+});
+
+modalContent.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+
+  currentY = e.touches[0].clientY;
+  let diff = currentY - startY;
+
+  if (diff > 0) {
+    modalContent.style.transform = `translateY(${diff}px)`;
+  }
+});
+
+modalContent.addEventListener("touchend", () => {
+  isDragging = false;
+
+  let diff = currentY - startY;
+
+  if (diff > 120) {
+    closeModal();
+  } else {
+    modalContent.style.transform = "translateY(0)";
+  }
+});
+
+/* ---------------- LIGHTBOX ---------------- */
+
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
@@ -111,9 +164,11 @@ function openLightbox(src) {
   document.body.appendChild(lb);
 }
 
-// Event listeners
+/* ---------------- EVENTS ---------------- */
+
 searchInput.oninput = renderPosts;
 
-// Init
+/* ---------------- INIT ---------------- */
+
 generateCategories();
 renderPosts();
