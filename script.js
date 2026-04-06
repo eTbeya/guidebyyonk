@@ -83,10 +83,17 @@ function openPost(post) {
 
     <div class="gallery">
       ${post.images.map(img => `
-        <img src="${img}" onclick="openLightbox('${img}')">
+        <img src="${img}" class="gallery-img">
       `).join("")}
     </div>
   `;
+
+  // 👉 ТУК е ключът
+  document.querySelectorAll(".gallery-img").forEach(img => {
+    img.addEventListener("click", () => {
+      openLightbox(img.src);
+    });
+  });
 }
 
 function closeModal() {
