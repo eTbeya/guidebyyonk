@@ -60,13 +60,12 @@ function renderPosts() {
     const card = document.createElement("div");
     card.className = "card";
 
-    // 🔥 UPDATED CARD (с категория)
     card.innerHTML = `
-      <div class="card-img-wrap">
-        <img src="${post.cover}">
-        <span class="card-category">${post.category}</span>
+      <img src="${post.cover}">
+      <div class="card-content">
+        <h3>${post.title}</h3>
+        <div class="card-category">${post.category}</div>
       </div>
-      <h3>${post.title}</h3>
     `;
 
     card.onclick = () => openPost(post);
@@ -103,7 +102,6 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-/* CLICK OUTSIDE */
 modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
