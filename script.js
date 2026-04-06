@@ -6,7 +6,8 @@ const categoryNav = document.getElementById("categoryNav");
 
 let activeCategory = "all";
 
-/* CATEGORIES */
+/* ================= CATEGORIES ================= */
+
 function generateCategories() {
   const categories = [...new Set(posts.map(p => p.category))];
 
@@ -15,6 +16,7 @@ function generateCategories() {
   const all = document.createElement("div");
   all.textContent = "All";
   all.className = "category-item active";
+
   all.onclick = () => {
     activeCategory = "all";
     setActive(all);
@@ -41,15 +43,18 @@ function generateCategories() {
 function setActive(el) {
   document.querySelectorAll(".category-item")
     .forEach(i => i.classList.remove("active"));
+
   el.classList.add("active");
 }
 
-/* POSTS */
+/* ================= POSTS ================= */
+
 function renderPosts() {
   const search = searchInput.value.toLowerCase();
   grid.innerHTML = "";
 
   posts.forEach(post => {
+
     if (
       !post.title.toLowerCase().includes(search) &&
       !(post.content || "").toLowerCase().includes(search)
@@ -74,7 +79,8 @@ function renderPosts() {
   });
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
+
 function openPost(post) {
   modal.style.display = "flex";
 
@@ -82,7 +88,9 @@ function openPost(post) {
     <span class="close-btn" onclick="closeModal()">X</span>
     <h2>${post.title}</h2>
 
-    <div class="post-content">${post.content}</div>
+    <div class="post-content">
+      ${post.content}
+    </div>
 
     <div class="gallery">
       ${post.images.map(img => `
@@ -91,12 +99,18 @@ function openPost(post) {
     </div>
   `;
 
-  document.querySelectorAll(".gallery-img").forEach(img => {
+  /* 🔥 ВСИЧКИ СНИМКИ → CLICK → LIGHTBOX */
+  modalContent.querySelectorAll("img").forEach(img => {
+
+    img.style.cursor = "zoom-in";
+
     img.addEventListener("click", () => {
       openLightbox(img.src);
     });
   });
 }
+
+/* ================= CLOSE ================= */
 
 function closeModal() {
   modal.style.display = "none";
@@ -106,24 +120,25 @@ modal.onclick = (e) => {
   if (e.target === modal) closeModal();
 };
 
-/* LIGHTBOX */
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+
+/* ================= LIGHTBOX ================= */
+
 function openLightbox(src) {
   const lb = document.createElement("div");
   lb.className = "lightbox";
 
   lb.innerHTML = `<img src="${src}">`;
 
-  modal.style.display = "none";
-
-  lb.onclick = () => {
-    lb.remove();
-    modal.style.display = "flex";
-  };
+  lb.onclick = () => lb.remove();
 
   document.body.appendChild(lb);
 }
 
-/* INIT */
+/* ================= INIT ================= */
+
 searchInput.oninput = renderPosts;
 
 generateCategories();
