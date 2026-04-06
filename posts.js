@@ -34,7 +34,7 @@ If you see <b>“In Peace”</b> → you cannot attack yet.
 </ul>
 
 <h2>Strategy</h2>
-
+<img src="images/1.jpg" style="width:100%; border-radius:10px; margin:10px 0;"> 
 Go to <b>Plunder</b> and evaluate enemies:
 <ul>
   <li>If you can win → attack</li>
