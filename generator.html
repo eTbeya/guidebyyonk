@@ -47,12 +47,10 @@ textarea {
   height: 180px;
 }
 
-/* toolbar */
 .toolbar button {
   margin: 5px;
 }
 
-/* preview */
 .preview-box {
   margin-top: 20px;
   padding: 15px;
@@ -63,13 +61,6 @@ textarea {
 #preview img {
   max-width: 100%;
   border-radius: 10px;
-}
-
-/* images list */
-.img-item {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0;
 }
 
 button {
@@ -130,14 +121,6 @@ pre {
 </div>
 
 <div class="box">
-  <h3>Images</h3>
-  <input id="imgInput" placeholder="images/example.jpg">
-  <button onclick="addImageToList()">Add</button>
-
-  <div id="imagesList"></div>
-</div>
-
-<div class="box">
   <button onclick="generate()">⚡ Generate</button>
   <button onclick="copy()">📋 Copy</button>
 </div>
@@ -151,9 +134,8 @@ pre {
 
 <script>
 
-let images = [];
-
 /* EDITOR */
+
 function wrap(symbol) {
   const textarea = document.getElementById("content");
   const start = textarea.selectionStart;
@@ -172,11 +154,19 @@ function addCode() {
   textarea.value += "\n```\ncode here\n```\n";
 }
 
+/* 🔥 FIXED IMAGE INSERT */
 function addImage() {
   const textarea = document.getElementById("content");
-  const url = prompt("Image path:");
+  const url = prompt("Image path (images/x.jpg):");
   if (!url) return;
-  textarea.value += `\n<img src="${url}">\n`;
+
+  const start = textarea.selectionStart;
+
+  const imgTag = `
+<img src="${url}" class="post-img">
+`;
+
+  textarea.setRangeText(imgTag, start, start, "end");
 }
 
 function addHighlight() {
@@ -184,49 +174,22 @@ function addHighlight() {
   textarea.value += "\n!! Important text\n";
 }
 
-/* IMAGE LIST */
-function addImageToList() {
-  const input = document.getElementById("imgInput");
-  if (!input.value) return;
+/* MARKDOWN */
 
-  images.push(input.value);
-  input.value = "";
-  renderImages();
-}
-
-function renderImages() {
-  const list = document.getElementById("imagesList");
-  list.innerHTML = "";
-
-  images.forEach((img, i) => {
-    list.innerHTML += `
-      <div class="img-item">
-        <span>${img}</span>
-        <button onclick="removeImg(${i})">X</button>
-      </div>
-    `;
-  });
-}
-
-function removeImg(i) {
-  images.splice(i,1);
-  renderImages();
-}
-
-/* MARKDOWN FIXED */
 function markdownToHTML(text) {
 
-  text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
+  /* headings */
   text = text.replace(/^# (.*$)/gim, "<h1>$1</h1>");
   text = text.replace(/^## (.*$)/gim, "<h2>$1</h2>");
 
+  /* bold italic */
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
   text = text.replace(/\*(.*?)\*/g, "<i>$1</i>");
 
+  /* code */
   text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
 
-  /* LIST FIX */
+  /* list */
   text = text.replace(/(?:^- .+\n?)+/gm, match => {
     const items = match.trim().split("\n")
       .map(line => `<li>${line.replace("- ","")}</li>`)
@@ -234,15 +197,17 @@ function markdownToHTML(text) {
     return `<ul>${items}</ul>`;
   });
 
-  /* HIGHLIGHT */
+  /* highlight */
   text = text.replace(/^!! (.*$)/gim, '<div class="highlight">$1</div>');
 
+  /* line breaks */
   text = text.replace(/\n/g, "<br>");
 
   return text;
 }
 
 /* PREVIEW */
+
 const contentInput = document.getElementById("content");
 const preview = document.getElementById("preview");
 
@@ -251,6 +216,7 @@ contentInput.addEventListener("input", () => {
 });
 
 /* GENERATE */
+
 function generate() {
   const title = document.getElementById("title").value;
   const category = document.getElementById("category").value;
@@ -260,8 +226,6 @@ function generate() {
     document.getElementById("content").value
   );
 
-  const imgFormatted = images.map(i => `"${i}"`).join(",\n    ");
-
   const code = `
 {
   title: "${title}",
@@ -270,9 +234,7 @@ function generate() {
   content: \`
 ${content}
   \`,
-  images: [
-    ${imgFormatted}
-  ]
+  images: []
 },
 `;
 
@@ -288,4 +250,4 @@ function copy() {
 </script>
 
 </body>
-</html>
+</html> 
