@@ -83,11 +83,17 @@ function renderPosts() {
 
 function openPost(post) {
   modal.style.display = "flex";
-  document.body.style.overflow = "hidden"; // 🔥 disable background scroll
+  document.body.style.overflow = "hidden";
 
   modalContent.innerHTML = `
-    <span class="close-btn" id="closeBtn">X</span>
-    <h2>${post.title}</h2>
+    <div class="post-header">
+      <span class="post-title">${post.title}</span>
+      <span class="close-btn" id="closeBtn">✕</span>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
 
     <div class="post-content">
       ${post.content}
@@ -100,10 +106,23 @@ function openPost(post) {
     </div>
   `;
 
-  // close button fix (без inline onclick)
+  // CLOSE BUTTON
   document.getElementById("closeBtn").onclick = closeModal;
 
-  /* 🔥 СЪБИРАМЕ ВСИЧКИ СНИМКИ */
+  // ================= PROGRESS BAR =================
+  modal.onscroll = () => {
+    const scrollTop = modal.scrollTop;
+    const scrollHeight = modal.scrollHeight - modal.clientHeight;
+
+    const progress = (scrollTop / scrollHeight) * 100;
+
+    const fill = document.getElementById("progressFill");
+    if (fill) fill.style.width = progress + "%";
+  };
+
+  
+
+  // ================= IMAGES =================
   const allImages = [];
   const images = modalContent.querySelectorAll("img");
 
@@ -111,7 +130,6 @@ function openPost(post) {
     allImages.push(img.src);
   });
 
-  /* 🔥 CLICK */
   images.forEach((img, index) => {
     img.style.cursor = "zoom-in";
 
@@ -125,7 +143,7 @@ function openPost(post) {
 
 function closeModal() {
   modal.style.display = "none";
-  document.body.style.overflow = ""; // 🔥 restore scroll
+  document.body.style.overflow = "";
 }
 
 modal.onclick = (e) => {
@@ -142,7 +160,6 @@ let currentImages = [];
 let currentIndex = 0;
 
 function openLightbox(startIndex, imagesArray) {
-
   currentImages = imagesArray;
   currentIndex = startIndex;
 
@@ -159,7 +176,6 @@ function openLightbox(startIndex, imagesArray) {
 
   const img = document.getElementById("lightbox-img");
 
-  /* CLOSE */
   lb.onclick = (e) => {
     if (e.target === lb) {
       lb.remove();
@@ -167,7 +183,6 @@ function openLightbox(startIndex, imagesArray) {
     }
   };
 
-  /* ARROWS CLICK */
   lb.querySelector(".left").onclick = (e) => {
     e.stopPropagation();
     prevImage(img);
@@ -178,7 +193,6 @@ function openLightbox(startIndex, imagesArray) {
     nextImage(img);
   };
 
-  /* SWIPE */
   let startX = 0;
 
   img.addEventListener("touchstart", e => {
@@ -192,11 +206,10 @@ function openLightbox(startIndex, imagesArray) {
     if (startX - endX > 50) nextImage(img);
   });
 
-  /* KEYBOARD */
   document.onkeydown = (e) => {
     if (e.key === "ArrowRight") nextImage(img);
     if (e.key === "ArrowLeft") prevImage(img);
-    if (e.key === "Escape") lb.remove(); // 🔥 FIX
+    if (e.key === "Escape") lb.remove();
   };
 }
 
