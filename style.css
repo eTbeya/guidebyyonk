@@ -189,6 +189,7 @@ body {
 
 .modal-content h1 {
   font-size: 26px;
+  text-aligin: center;
   text-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00c8;
 }
 
