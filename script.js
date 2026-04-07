@@ -146,6 +146,7 @@ function openLightbox(startIndex, imagesArray) {
   lb.className = "lightbox";
 
   lb.innerHTML = `
+    <span class="lb-close">✕</span>
     <span class="lb-arrow left">&#10094;</span>
     <img src="${currentImages[currentIndex]}" id="lightbox-img">
     <span class="lb-arrow right">&#10095;</span>
@@ -155,15 +156,22 @@ function openLightbox(startIndex, imagesArray) {
 
   const img = document.getElementById("lightbox-img");
 
-  /* CLOSE */
-  lb.onclick = (e) => {
+  /* 🔥 CLOSE BUTTON */
+  lb.querySelector(".lb-close").onclick = (e) => {
+    e.stopPropagation();
+    lb.remove();
+    document.onkeydown = null;
+  };
+
+  /* 🔥 CLICK OUTSIDE CLOSE */
+  lb.addEventListener("click", (e) => {
     if (e.target === lb) {
       lb.remove();
       document.onkeydown = null;
     }
-  };
+  });
 
-  /* ARROWS CLICK */
+  /* 🔥 ARROWS */
   lb.querySelector(".left").onclick = (e) => {
     e.stopPropagation();
     prevImage(img);
@@ -174,7 +182,7 @@ function openLightbox(startIndex, imagesArray) {
     nextImage(img);
   };
 
-  /* SWIPE */
+  /* 🔥 SWIPE (mobile) */
   let startX = 0;
 
   img.addEventListener("touchstart", e => {
@@ -188,10 +196,14 @@ function openLightbox(startIndex, imagesArray) {
     if (startX - endX > 50) nextImage(img);
   });
 
-  /* KEYBOARD */
+  /* 🔥 ESC + ARROWS */
   document.onkeydown = (e) => {
     if (e.key === "ArrowRight") nextImage(img);
     if (e.key === "ArrowLeft") prevImage(img);
+    if (e.key === "Escape") {
+      lb.remove();
+      document.onkeydown = null;
+    }
   };
 }
 
