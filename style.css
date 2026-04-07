@@ -179,6 +179,7 @@ body {
   overflow-y: auto;
 
   padding: 20px;
+  padding-bottom: 100px; /* 🔥 това оправя проблема */
   border-radius: 12px;
 
   margin: 0 auto;
