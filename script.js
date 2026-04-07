@@ -9,131 +9,131 @@ let activeCategory = "all";
 /* ================= CATEGORIES ================= */
 
 function generateCategories() {
-const categories = [...new Set(posts.map(p => p.category))];
+  const categories = [...new Set(posts.map(p => p.category))];
 
-categoryNav.innerHTML = "";
+  categoryNav.innerHTML = "";
 
-const all = document.createElement("div");
-all.textContent = "All";
-all.className = "category-item active";
+  const all = document.createElement("div");
+  all.textContent = "All";
+  all.className = "category-item active";
 
-all.onclick = () => {
-activeCategory = "all";
-setActive(all);
-renderPosts();
-};
+  all.onclick = () => {
+    activeCategory = "all";
+    setActive(all);
+    renderPosts();
+  };
 
-categoryNav.appendChild(all);
+  categoryNav.appendChild(all);
 
-categories.forEach(cat => {
-const el = document.createElement("div");
-el.textContent = cat;
-el.className = "category-item";
+  categories.forEach(cat => {
+    const el = document.createElement("div");
+    el.textContent = cat;
+    el.className = "category-item";
 
-el.onclick = () => {  
-  activeCategory = cat;  
-  setActive(el);  
-  renderPosts();  
-};  
+    el.onclick = () => {
+      activeCategory = cat;
+      setActive(el);
+      renderPosts();
+    };
 
-categoryNav.appendChild(el);
-
-});
+    categoryNav.appendChild(el);
+  });
 }
 
 function setActive(el) {
-document.querySelectorAll(".category-item")
-.forEach(i => i.classList.remove("active"));
+  document.querySelectorAll(".category-item")
+    .forEach(i => i.classList.remove("active"));
 
-el.classList.add("active");
+  el.classList.add("active");
 }
 
 /* ================= POSTS ================= */
 
 function renderPosts() {
-const search = searchInput.value.toLowerCase();
-grid.innerHTML = "";
+  const search = searchInput.value.toLowerCase();
+  grid.innerHTML = "";
 
-posts.forEach(post => {
+  posts.forEach(post => {
 
-if (  
-  !post.title.toLowerCase().includes(search) &&  
-  !(post.content || "").toLowerCase().includes(search)  
-) return;  
+    if (
+      !post.title.toLowerCase().includes(search) &&
+      !(post.content || "").toLowerCase().includes(search)
+    ) return;
 
-if (activeCategory !== "all" && post.category !== activeCategory) return;  
+    if (activeCategory !== "all" && post.category !== activeCategory) return;
 
-const card = document.createElement("div");  
-card.className = "card";  
+    const card = document.createElement("div");
+    card.className = "card";
 
-card.innerHTML = `  
-  <img src="${post.cover}">  
-  <div class="card-content">  
-    <h3>${post.title}</h3>  
-    <div class="card-category">${post.category}</div>  
-  </div>  
-`;  
+    card.innerHTML = `
+      <img src="${post.cover}">
+      <div class="card-content">
+        <h3>${post.title}</h3>
+        <div class="card-category">${post.category}</div>
+      </div>
+    `;
 
-card.onclick = () => openPost(post);  
+    card.onclick = () => openPost(post);
 
-grid.appendChild(card);
-
-});
+    grid.appendChild(card);
+  });
 }
 
 /* ================= MODAL ================= */
 
 function openPost(post) {
-modal.style.display = "flex";
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden"; // 🔥 disable background scroll
 
-modalContent.innerHTML = `
-<span class="close-btn" onclick="closeModal()">X</span>
-<h2>${post.title}</h2>
+  modalContent.innerHTML = `
+    <span class="close-btn" id="closeBtn">X</span>
+    <h2>${post.title}</h2>
 
-<div class="post-content">  
-  ${post.content}  
-</div>  
+    <div class="post-content">
+      ${post.content}
+    </div>
 
-<div class="gallery">  
-  ${post.images.map(img => `  
-    <img src="${img}">  
-  `).join("")}  
-</div>
+    <div class="gallery">
+      ${(post.images || []).map(img => `
+        <img src="${img}">
+      `).join("")}
+    </div>
+  `;
 
-`;
+  // close button fix (без inline onclick)
+  document.getElementById("closeBtn").onclick = closeModal;
 
-/* 🔥 СЪБИРАМЕ ВСИЧКИ СНИМКИ */
-const allImages = [];
-const images = modalContent.querySelectorAll("img");
+  /* 🔥 СЪБИРАМЕ ВСИЧКИ СНИМКИ */
+  const allImages = [];
+  const images = modalContent.querySelectorAll("img");
 
-images.forEach(img => {
-allImages.push(img.src);
-});
+  images.forEach(img => {
+    allImages.push(img.src);
+  });
 
-/* 🔥 CLICK */
-images.forEach((img, index) => {
+  /* 🔥 CLICK */
+  images.forEach((img, index) => {
+    img.style.cursor = "zoom-in";
 
-img.style.cursor = "zoom-in";  
-
-img.addEventListener("click", () => {  
-  openLightbox(index, allImages);  
-});
-
-});
+    img.addEventListener("click", () => {
+      openLightbox(index, allImages);
+    });
+  });
 }
 
 /* ================= CLOSE ================= */
 
 function closeModal() {
-modal.style.display = "none";
+  modal.style.display = "none";
+  document.body.style.overflow = ""; // 🔥 restore scroll
 }
 
 modal.onclick = (e) => {
-if (e.target === modal) closeModal();
+  if (e.target === modal) closeModal();
 };
 
 document.addEventListener("keydown", (e) => {
-if (e.key === "Escape") closeModal();
+  if (e.key === "Escape") closeModal();
 });
 
 /* ================= LIGHTBOX ================= */
@@ -143,69 +143,73 @@ let currentIndex = 0;
 
 function openLightbox(startIndex, imagesArray) {
 
-currentImages = imagesArray;
-currentIndex = startIndex;
+  currentImages = imagesArray;
+  currentIndex = startIndex;
 
-const lb = document.createElement("div");
-lb.className = "lightbox";
+  const lb = document.createElement("div");
+  lb.className = "lightbox";
 
-lb.innerHTML =   <span class="lb-arrow left">&#10094;</span>   <img src="${currentImages[currentIndex]}" id="lightbox-img">   <span class="lb-arrow right">&#10095;</span>  ;
+  lb.innerHTML = `
+    <span class="lb-arrow left">&#10094;</span>
+    <img src="${currentImages[currentIndex]}" id="lightbox-img">
+    <span class="lb-arrow right">&#10095;</span>
+  `;
 
-document.body.appendChild(lb);
+  document.body.appendChild(lb);
 
-const img = document.getElementById("lightbox-img");
+  const img = document.getElementById("lightbox-img");
 
-/* CLOSE */
-lb.onclick = (e) => {
-if (e.target === lb) {
-lb.remove();
-document.onkeydown = null;
-}
-};
+  /* CLOSE */
+  lb.onclick = (e) => {
+    if (e.target === lb) {
+      lb.remove();
+      document.onkeydown = null;
+    }
+  };
 
-/* ARROWS CLICK */
-lb.querySelector(".left").onclick = (e) => {
-e.stopPropagation();
-prevImage(img);
-};
+  /* ARROWS CLICK */
+  lb.querySelector(".left").onclick = (e) => {
+    e.stopPropagation();
+    prevImage(img);
+  };
 
-lb.querySelector(".right").onclick = (e) => {
-e.stopPropagation();
-nextImage(img);
-};
+  lb.querySelector(".right").onclick = (e) => {
+    e.stopPropagation();
+    nextImage(img);
+  };
 
-/* SWIPE */
-let startX = 0;
+  /* SWIPE */
+  let startX = 0;
 
-img.addEventListener("touchstart", e => {
-startX = e.touches[0].clientX;
-});
+  img.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
 
-img.addEventListener("touchend", e => {
-let endX = e.changedTouches[0].clientX;
+  img.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
 
-if (endX - startX > 50) prevImage(img);  
-if (startX - endX > 50) nextImage(img);
+    if (endX - startX > 50) prevImage(img);
+    if (startX - endX > 50) nextImage(img);
+  });
 
-});
-
-/* KEYBOARD */
-document.onkeydown = (e) => {
-if (e.key === "ArrowRight") nextImage(img);
-if (e.key === "ArrowLeft") prevImage(img);
-};
+  /* KEYBOARD */
+  document.onkeydown = (e) => {
+    if (e.key === "ArrowRight") nextImage(img);
+    if (e.key === "ArrowLeft") prevImage(img);
+    if (e.key === "Escape") lb.remove(); // 🔥 FIX
+  };
 }
 
 function nextImage(img) {
-currentIndex = (currentIndex + 1) % currentImages.length;
-img.src = currentImages[currentIndex];
+  currentIndex = (currentIndex + 1) % currentImages.length;
+  img.src = currentImages[currentIndex];
 }
 
 function prevImage(img) {
-currentIndex =
-(currentIndex - 1 + currentImages.length) % currentImages.length;
+  currentIndex =
+    (currentIndex - 1 + currentImages.length) % currentImages.length;
 
-img.src = currentImages[currentIndex];
+  img.src = currentImages[currentIndex];
 }
 
 /* ================= INIT ================= */
