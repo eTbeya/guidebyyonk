@@ -1,35 +1,113 @@
 window.posts = [
 
-
 {
-  title: "Bounty Path",
-  category: "Cross Server",
-  cover: "images/bounty1.png",
+  title: "📘 Welcome – What You’ll Find in This Guide Hub",
+  category: "General",
+  cover: "images/intro.png",
   content: `
-<div class="highlight">In this weekend mode event you make deliveries, fight monsters and other players to earn points. In the evening there will be a boss fight where your whole family will participate. There are two separate presets to use depending on if you are in the delivery portion of the event or the boss fight. That mean PVP setup for  deliveries & other players, and PVE setup for boss fight.</div><br><b>You can choiche the setup from Presets, chek this guide if u not have idea what its this, chek guide for Battle Plan, Gear Plan</b> <br><br><div class="highlight"><b>Bounty Path - deliveries, fight other player - PVP setup</b> <b>Burglar Invasion - fight the boss - PVE setup</b></div><br><img src="images/bounty2.png" class="post-img"><br><br><h1>Deliveries - Bounty Path</h1><br>Delivery mode opens at 09:00 server hour. You will have 3 deliveries to make during the day. Deliveries will be automatically sent at 10:00, 15:00, and 20:00 server hour if you are not already on a delivery or have sent all your deliveries for the day. Use the Issue Delivery button to open the delivery menu.<br><br>Deliveries will take 3 hours to complete. There are 4 tiers of delivery with each giving higher fame points rewards than the previous. From high to low they are S, A, B, C. Your all time highest combat power will influence the amount of fame points you can gain from deliveries. The refresh button on this menu has a total of 3 uses for the entire day. Once you start a delivery the timer will count down until you have finished. Use the Claim button to finish the delivery and earn the fame points and rewards.<br><img src="images/bounty3.png" class="post-img"> <img src="images/bounty4.png" class="post-img"><br><br><h1>Player and Monster Fights</h1><br>In addition to making deliveries there are also other players and monsters to fight. You start the day with 3 challenge points. Challenge points will recover one point every 2 hours. These are required to fight other players that are making deliveries. You can earn extra fame points just from fighting other players. If you win the other player will lose 20% of the completion rewards from their delivery. A player can only lose a maximum of 3 challenges per delivery.<br><br>Monsters do not require challenge points to fight. There are a total of 4 on the map at event open and they refresh when deliveries are automatically sent at 10:00, 15:00, and 20:00 server hour. Monsters give fame points when defeated. Power level of monsters will vary depending on which ones spawn and the rarity of delivery they have.<br><br><h1>Boss fight - Burglar Invasion</h1><br>Starting bombs and disruption items are determined by family rank before the rally starts at 20:20 server hour. You are able to turn off seeing other player characters with the Block Other Players checkbox. This is helpful if someone’s character is overlapping the stations as you have to exit the mode to clear the player profile popup. The donate button will let you donate bombs to power your family’s cannons. The feed buttons allow you to donate disruption items to the other family bosses. View will show the disruption item total and boss skill cooldowns for your family. <br><br><b>There is a 10 minute rally period before the boss fight begins.</b> The fight will last until your family has defeated the boss or the time is up. Rally is from 20:20 to 20:29. Fight is from 20:30 to 21:00. The family rankings for this mode are determined by boss hp left at the end of the fight period and time taken to defeat the boss if more than one family reaches 0 HP.<br><img src="images/bounty6.png" class="post-img"><br><br><h1>Stations</h1><br>The Bomb Station and  Disruption Station are dungeons that you will fight to earn more of their respective items. They have an Easy, Medium, and Hard difficulty with a setting to fight 1, 5 or 10 boss monsters. To figure out the difficulty you can fight at, start with Easy and x1. Adjust the difficulty up until you either win against all the monsters or are defeated. Then adjust the quantity higher for the maximum difficulty you were able to win against. Find the difficulty and quantity of monsters you are able to continuously defeat and use those settings to keep fighting the dungeon. There is an automatic challenge button that will use the settings selected when it is running. While you are in the dungeon fights you can click the family name to donate items and see the bomb and disruption totals for them.<br><h1>Boss Skills</h1><br>The boss will use disruption items to power the 3 skills it has. Rat potion will cause the boss to recover a portion of HP. Burglar Phantom will reduce the firepower of the cannons. Water Bomb will pause the firing of the cannons. Each of the skills has an independent cooldown and progress bar. You can overfill the progress bar with the respective disruption item and it will stack until the skill is off cooldown.<br><h1>Strategies</h1><br><h2><b>Bounty Path</b></h2><br><div class="highlight">Deliveries 09:00 to 20:19 - Equip PvP kit in preset</div><br>You can accept deliveries as soon as the event opens. Delivery ranks S > A > B > C. Higher grade delivery means more points earned. 3 free delivery refreshes TOTAL for the day. Deliveries will auto send at 10, 15, and 20 hour. If you lose to other players, your delivery will lose reward points. You start the day with 3 challenge points to fight other players. Challenge points recover one every 2 hours. Each player can only be fought and defeated 3 times per delivery. Deliveries take 3 hours to complete.<br><br><b>Strategy:</b> Be online right at open to take your first delivery. Anything above grade C is good. Accept your delivery rewards as soon as your delivery finishes to start your next delivery. Try to have all 3 done and claimed before 20:19 to max rewards for the boss fight. Challenge players you know you will win against to get maximum extra points. Monsters spawn on the map and take no challenge points to fight. Defeat all 4 if you are able. They refresh when deliveries auto send. Total of 16 possible monsters to defeat if online at 09:00.<br><br><h2><b>Burglar Invasion</b></h2><br><div class="highlight">Boss Fight 20:20 to 21:00 - Equip PvE kit in preset</div><br>Base bombs and debuff items determined by family rank at 20:20. There are two dungeons to fight with 3 separate difficulties. Both dungeons can be challenged repeatedly. Rally from 20:20 to 20:29. Boss fight from 20:30 to 21:00<br><br>Strategy: Turn OFF seeing other players! You have to exit the mode to clear the screen if you accidentally click someone. Gather as many players as possible during the 10 minute rally period. Have everyone be prepared to donate bombs as soon as the boss fight starts. After donating bombs, proceed to the bomb dungeon. If unsure of the level you can fight it at, start with lowest difficulty x1 and scale up from there. Set the dungeon to the highest level you can complete and x10 the fights. Max out the bombs bar. Collect two extra rounds of bombs. Farm and donate debuffs to the family closest in % to you. Keep the bomb bar at max level. Mode ends when boss is defeated or time runs out.
-  `,
-  images: []
+<h1>Welcome to the Ultimate Guide Hub</h1>
+
+Everything you need to progress faster, smarter, and more efficiently.
+
+<div class="highlight">
+This site is built to help you understand the game — not just play it.
+</div>
+
+
+<h2>What You’ll Find Here</h2>
+
+<ul>
+<li>Complete system explanations</li>
+<li>Step-by-step progression guides</li>
+<li>Best builds for every class</li>
+<li>Early, mid, and end game strategies</li>
+<li>Hidden mechanics and optimization tips</li>
+</ul>
+
+
+<h2>Game Systems</h2>
+
+<ul>
+<li>Gear, Affixes & Upgrades</li>
+<li>Mounts, Artifacts & Relics</li>
+<li>Avian System & Breeding</li>
+<li>Star Hero & Arrays</li>
+<li>Back Accessories & Talents</li>
+</ul>
+
+<div class="highlight">
+Learn how each system actually works — not just what it does.
+</div>
+
+
+<h2>Classes & Builds</h2>
+
+<ul>
+<li>Warbringer, Sacred Hunter, Darklord</li>
+<li>Beastmaster, Prophet, Plume Monarch</li>
+<li>Early Game → End Game builds</li>
+<li>PVE & PVP setups</li>
+</ul>
+
+Each class will have optimized builds depending on your stage.
+
+
+<h2>Game Modes & Content</h2>
+
+<ul>
+<li>Dungeons & Boss Strategies</li>
+<li>Cross Server Events</li>
+<li>Family Systems & Battles</li>
+<li>Arena & PVP</li>
+<li>Special Events & Rush Modes</li>
+</ul>
+
+
+<h2>Shops & Resources</h2>
+
+<ul>
+<li>Rush Shop, Glory Shop, Points Shop</li>
+<li>Mystic Merchant & Battle Shop</li>
+<li>Auto Mart & Skill Shop</li>
+<li>Resource optimization guides</li>
+</ul>
+
+<div class="highlight">
+Spend smarter — not harder.
+</div>
+
+
+<h2>Extra Guides</h2>
+
+<ul>
+<li>Daily Tasks & Efficiency Routes</li>
+<li>Early Game Boosting Tips</li>
+<li>Parking Wars & Strategies</li>
+<li>Special Event Walkthroughs</li>
+</ul>
+
+
+<h2>How to Use This Site</h2>
+
+<ul>
+<li>Use the search bar to find specific guides</li>
+<li>Browse categories for structured content</li>
+<li>Open posts to explore detailed explanations</li>
+</ul>
+
+New content will be added regularly.
+
+
+<h2>Final Note</h2>
+
+This is not just a guide site.<br>
+It’s a place to master the game.<br>
+
+<div class="highlight">
+If you learn the systems — you control the game.
+</div>
+
+`,
 },
 
-
-{
-  title: "Soul",
-  category: "Dungeon",
-  cover: "images/soul7.jpg",
-  content: `
-<h1>Selection</h1><br><div class="highlight">Embed, Fusion, Salvage, Acquisition</div><br><h1>Embed </h1><br>In this section you can see equipped Souls, Pink Soul guidelines, choose which Soul to display under your character, check all Souls, what effects and % they give, and check your available bonus from equipped Souls.<br><img src="images/soul1.png" class="post-img"><br><h1>Fusion</h1><br>From this section, 2 red Souls are combined to get 1 pink Soul.<br>This can be done by combining red souls from collection 1 and 2.<br>Collection 1 are the standard red runes that are taken from the - Soul Prayer, Wining Family Brawl or Family Brawl shop, Points Shop.<br>Collection 2 is more specific and harder to get, it is taken from Cross Arena - Glory shop, cost 4k Glory Medal, you can take 1 per week.<br>In the combination window below it shows which runes from the 2 sections you need, first it shows from collection 1, then from 2.<br>The pink Soul takes the effects of the 2 red ones.<br><img src="images/soul2.png" class="post-img"><br><h1>Salvage</h1><br>From here, you can remove unnecessary Souls to obtain Soul Essence, which can be used to upgrade equipped Souls.<br><img src="images/soul3.png" class="post-img"><br><br><div class="highlight">Acquisition</div><br>This section has 2 subsections - Soul Trail, Soul Prayer. The principle is literally the same as the Farm and Prayer Statue<br><img src="images/soul4.png" class="post-img"><br><br><h1>Soul Trail</h1><br>Here you pass levels with different bosses. For each level you pass, you get souls of a different color.<br>Every 10 levels as a reward you get x10 Soul Crystal which are used in Soul Prayer.<br><img src="images/soul5.png" class="post-img"><br><br><h1>Soul Prayer</h1><br>From here you summon Souls.<br><ul><li>Well (blue) - 80%</li><li>Rare (purple) - 16%</li><li>Epic (yellow) - 3.6%</li><li>Legendary (red) - 0.4%</li></ul><img src="images/soul6.png" class="post-img"><br><div class="highlight">Soul Rush - for complete you need total 20k Soul Essence. And for practice need, to upgrade equipped Souls. Meaning just use 20k Soul Essence for upgrade and your event its done</div>
-  `,
-  images: []
-},
-
-{
-  title: "Back Accessory",
-  category: "Character Systems",
-  cover: "images/back3.jpg",
-  content: `
-<h2>They are standard and Special, same principle as artifacts Standard</h2><br><div class="highlight">Raccoon Tail, Wolf Tail, Fox Tail.</div><br>They have 3 type of feather - Base ATK, Base HP, Base Def, each upgrade its appy for all.<br>To be visible, you must reach the following levels for each of the three feather:<br><ul><li>Raccoon Tail - all feather 20lv</li><li>Wolf Tail - all feather 60lv</li><li>Fox Tail - all feather 120lv</li></ul><img src="images/back1.jpg" class="post-img"><br><h1>Talent of Back Acceory</h1><br>They are based on the classes available in the game. Each section has 3 identical columns - ATK boost, DEF boost, HP boost. <br>Each of them has subsections, with different classes, some of the subsections are different. These subsections have different maximum levels, some reach level 20, others up to 40.<br>When upgrading a subsection, first raise each section to level 10, so you can unlock all sections and get the effect of all at once, then upgrade.<br><img src="images/back2.jpg" class="post-img"><br><h2>How to get material for upgrading Back Acceory & Talent of Back Acceory</h2><br>This happens when complete levels in Dark Trials - Warrior (Dungeon)<br>This dungeon has a total of 5 levels per stage.<br>From 1 to 4 you earn Feather Coins, which are used to upgrade Feathers on your back accessories.<br>At level 5 you earn Divine Feather Coins, which are used to upgrade talents.<br>Each subsequent level gets harder and harder.<br><img src="images/back4.jpg" class="post-img"><br><h2>Other options for obtaining materials</h2><br>Battle Shop(family brawl)<br>Main family Shop, when femily reach level 7 / 8<br>Random event<br><img src="images/back6.jpg" class="post-img"><img src="images/back7.jpg" class="post-img"><br><br><h1>Useful information</h1><br>In the parking shop you can get a <b>Dark Trials Card</b> for 250k Park Coins, it is used to restart the progress up to this point, therefore, you can go through the levels you have passed so far again and get double rewards.<br><img src="images/back5.jpg" class="post-img"><br>
-  `,
-  images: []
-},
-  
 ];
