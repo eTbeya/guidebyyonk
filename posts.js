@@ -1,67 +1,61 @@
 window.posts = [
 
 {
-  title: "📘 Welcome – What You’ll Find in This Guide Hub",
+  title: "📘 Welcome – What You’ll Find Here",
   category: "General",
   cover: "images/intro.png",
   content: `
-<h1>Welcome to the Ultimate Guide Hub</h1>
+<h1>Welcome</h1>
 
-Everything you need to progress faster, smarter, and more efficiently.
+This is a full guide hub focused on real game progress — not random tips.
 
 <div class="highlight">
-This site is built to help you understand the game — not just play it.
+Everything here is made to help you understand systems, not just follow builds.
 </div>
 
-
-<h2>What You’ll Find Here</h2>
+<h2>What This Site Covers</h2>
 
 <ul>
-<li>Complete system explanations</li>
-<li>Step-by-step progression guides</li>
-<li>Best builds for every class</li>
-<li>Early, mid, and end game strategies</li>
-<li>Hidden mechanics and optimization tips</li>
+<li>All game systems explained (Gear, Mount, Artifact, Avian, etc.)</li>
+<li>Step-by-step progression</li>
+<li>Builds for every class</li>
+<li>PVE & PVP setups</li>
+<li>Resource management</li>
 </ul>
 
-
-<h2>Game Systems</h2>
+<h2>Systems You’ll Find</h2>
 
 <ul>
-<li>Gear, Affixes & Upgrades</li>
-<li>Mounts, Artifacts & Relics</li>
-<li>Avian System & Breeding</li>
+<li>Magic Lamp, Gear Tier, Gear Affix</li>
+<li>Mount, Artifact, Relic</li>
+<li>Avian system & Breeding</li>
 <li>Star Hero & Arrays</li>
 <li>Back Accessories & Talents</li>
+<li>Divining Path & Battle Plans</li>
 </ul>
-
-<div class="highlight">
-Learn how each system actually works — not just what it does.
-</div>
-
 
 <h2>Classes & Builds</h2>
 
 <ul>
 <li>Warbringer, Sacred Hunter, Darklord</li>
 <li>Beastmaster, Prophet, Plume Monarch</li>
-<li>Early Game → End Game builds</li>
-<li>PVE & PVP setups</li>
+<li>Early / Mid / End game builds</li>
+<li>Optimized setups (not random)</li>
 </ul>
 
-Each class will have optimized builds depending on your stage.
+<div class="highlight">
+Builds are made for efficiency, not just damage.
+</div>
 
-
-<h2>Game Modes & Content</h2>
+<h2>Content & Modes</h2>
 
 <ul>
-<li>Dungeons & Boss Strategies</li>
-<li>Cross Server Events</li>
-<li>Family Systems & Battles</li>
+<li>Dungeons & Boss strategies</li>
+<li>Cross Server modes</li>
+<li>Family systems & events</li>
 <li>Arena & PVP</li>
-<li>Special Events & Rush Modes</li>
+<li>Special events & Rush content</li>
 </ul>
-
 
 <h2>Shops & Resources</h2>
 
@@ -69,45 +63,44 @@ Each class will have optimized builds depending on your stage.
 <li>Rush Shop, Glory Shop, Points Shop</li>
 <li>Mystic Merchant & Battle Shop</li>
 <li>Auto Mart & Skill Shop</li>
-<li>Resource optimization guides</li>
 </ul>
 
-<div class="highlight">
-Spend smarter — not harder.
-</div>
-
+Knowing where to spend resources = faster progress
 
 <h2>Extra Guides</h2>
 
 <ul>
-<li>Daily Tasks & Efficiency Routes</li>
-<li>Early Game Boosting Tips</li>
-<li>Parking Wars & Strategies</li>
-<li>Special Event Walkthroughs</li>
+<li>Daily tasks optimization</li>
+<li>Early game boosting</li>
+<li>Parking Wars strategies</li>
+<li>Event guides</li>
 </ul>
 
-
-<h2>How to Use This Site</h2>
-
-<ul>
-<li>Use the search bar to find specific guides</li>
-<li>Browse categories for structured content</li>
-<li>Open posts to explore detailed explanations</li>
-</ul>
-
-New content will be added regularly.
-
-
-<h2>Final Note</h2>
-
-This is not just a guide site.<br>
-It’s a place to master the game.<br>
+<h2>Important</h2>
 
 <div class="highlight">
-If you learn the systems — you control the game.
+This is not a basic guide site.
 </div>
 
-`,
-},
+This is meant for players who want to:
+<ul>
+<li>progress faster</li>
+<li>avoid mistakes</li>
+<li>actually understand the game</li>
+</ul>
+
+
+<h2>How to Use</h2>
+
+<ul>
+<li>Use search to find specific guides</li>
+<li>Browse categories</li>
+<li>Open posts for full breakdowns</li>
+</ul>
+
+More content will be added over time
+
+`
+}
 
 ];
