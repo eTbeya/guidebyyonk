@@ -2,7 +2,7 @@ window.posts = [
 
 {
   title: "📘 Welcome – What You’ll Find Here",
-  category: "General",
+  category: "Welcome",
   cover: "images/intro.png",
   content: `
 <h1>Welcome</h1>
