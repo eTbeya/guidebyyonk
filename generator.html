@@ -2,57 +2,126 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Generator</title>
+<title>Post Generator</title>
 
 <style>
+
+/* ===== BASE ===== */
 body {
   margin: 0;
-  font-family: Arial;
-  background: radial-gradient(circle at top, #1a1a2e, #0a0a12);
+  font-family: "Segoe UI", Arial;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,240,255,0.08), transparent),
+    radial-gradient(circle at 80% 70%, rgba(255,0,200,0.08), transparent),
+    #0a0a12;
   color: white;
 }
 
+/* ===== LAYOUT ===== */
 .container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: auto;
   padding: 30px;
 }
 
 h1 {
   text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
   text-shadow:
     0 0 10px #00f0ff,
     0 0 20px #ff00c8;
 }
 
-.box {
-  background: rgba(255,255,255,0.03);
-  padding: 20px;
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  margin-bottom: 20px;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
+/* ===== BOX ===== */
+.box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 20px;
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 20px rgba(0,240,255,0.05),
+    0 0 40px rgba(255,0,200,0.05);
+}
+
+/* ===== INPUTS ===== */
 input, textarea {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
   color: white;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus, textarea:focus {
+  border-color: #00f0ff;
+  box-shadow: 0 0 10px rgba(0,240,255,0.4);
 }
 
 textarea {
-  height: 180px;
+  height: 220px;
+  resize: vertical;
+}
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .toolbar button {
-  margin: 5px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
+.toolbar button:hover {
+  background: linear-gradient(45deg, #00f0ff, #ff00c8);
+  transform: translateY(-2px);
+}
+
+/* ===== BUTTONS ===== */
+.main-actions {
+  display: flex;
+  gap: 10px;
+}
+
+button.main {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  background: linear-gradient(45deg, #00f0ff, #ff00c8);
+  transition: 0.2s;
+}
+
+button.main:hover {
+  transform: scale(1.03);
+}
+
+/* ===== PREVIEW ===== */
 .preview-box {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 15px;
   border-radius: 12px;
   background: rgba(0,0,0,0.6);
@@ -63,26 +132,30 @@ textarea {
   border-radius: 10px;
 }
 
-button {
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: linear-gradient(45deg, #00f0ff, #ff00c8);
-  font-weight: bold;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
+/* ===== OUTPUT ===== */
 pre {
   background: #000;
-  color: #0f0;
+  color: #00ff88;
   padding: 15px;
   border-radius: 10px;
   white-space: pre-wrap;
+  max-height: 250px;
+  overflow: auto;
 }
+
+/* ===== CUSTOM ===== */
+.highlight {
+  background: linear-gradient(45deg, #ff00c8, #00f0ff);
+  padding: 8px;
+  border-radius: 8px;
+  margin: 5px 0;
+}
+
+.post-img {
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
 </style>
 </head>
 
@@ -92,104 +165,134 @@ pre {
 
 <h1>⚡ Post Generator</h1>
 
-<div class="box">
-  <input id="title" placeholder="Title">
-  <input id="category" placeholder="Category">
-  <input id="cover" placeholder="Cover (images/x.jpg)">
+<div class="grid">
+
+  <!-- LEFT SIDE -->
+  <div class="box">
+    <input id="title" placeholder="Title">
+    <input id="category" placeholder="Category">
+    <input id="cover" placeholder="Cover (images/x.jpg)">
+
+    <div class="toolbar">
+  <button onclick="bold()">Bold</button>
+  <button onclick="italic()">Italic</button>
+  <button onclick="inlineCode()">Code</button>
+  <button onclick="h1()">H1</button>
+  <button onclick="h2()">H2</button>
+  <button onclick="list()">List</button>
+  <button onclick="divider()">Divider</button>
+  <button onclick="codeBlock()">Block</button>
+  <button onclick="image()">Image</button>
+  <button onclick="link()">Link</button>
+  <button onclick="highlight()">🔥 Tip</button>
+  <button onclick="warning()">⚠ Warning</button>
+
 </div>
 
-<div class="box">
+    <textarea id="content" placeholder="Write your post..."></textarea>
 
-  <div class="toolbar">
-    <button onclick="wrap('**')">Bold</button>
-    <button onclick="wrap('*')">Italic</button>
-    <button onclick="wrap('# ')">H1</button>
-    <button onclick="wrap('## ')">H2</button>
-    <button onclick="addList()">List</button>
-    <button onclick="addCode()">Code</button>
-    <button onclick="addImage()">Image</button>
-    <button onclick="addHighlight()">🔥 Highlight</button>
+    <div class="main-actions">
+      <button class="main" onclick="generate()">Generate</button>
+      <button class="main" onclick="copy()">Copy</button>
+    </div>
   </div>
 
-  <textarea id="content" placeholder="Write here..."></textarea>
-
-  <div class="preview-box">
+  <!-- RIGHT SIDE -->
+  <div class="box">
     <h3>Preview</h3>
-    <div id="preview"></div>
+    <div class="preview-box">
+      <div id="preview"></div>
+    </div>
+
+    <h3>Output</h3>
+    <pre id="output"></pre>
   </div>
 
-</div>
-
-<div class="box">
-  <button onclick="generate()">⚡ Generate</button>
-  <button onclick="copy()">📋 Copy</button>
-</div>
-
-<div class="box">
-  <h3>Output</h3>
-  <pre id="output"></pre>
 </div>
 
 </div>
 
 <script>
 
-/* EDITOR */
+/* ===== EDITOR ===== */
+
+const textarea = document.getElementById("content");
 
 function wrap(symbol) {
-  const textarea = document.getElementById("content");
   const start = textarea.selectionStart;
   const end = textarea.selectionEnd;
   const selected = textarea.value.substring(start, end);
+
   textarea.setRangeText(symbol + selected + symbol);
 }
 
-function addList() {
-  const textarea = document.getElementById("content");
-  textarea.value += "\n- Item 1\n- Item 2\n";
-}
-
-function addCode() {
-  const textarea = document.getElementById("content");
-  textarea.value += "\n```\ncode here\n```\n";
-}
-
-/* 🔥 FIXED IMAGE INSERT */
-function addImage() {
-  const textarea = document.getElementById("content");
-  const url = prompt("Image path (images/x.jpg):");
-  if (!url) return;
-
+function insert(text) {
   const start = textarea.selectionStart;
-
-  const imgTag = `
-<img src="${url}" class="post-img">
-`;
-
-  textarea.setRangeText(imgTag, start, start, "end");
+  textarea.setRangeText(text, start, start, "end");
 }
 
-function addHighlight() {
-  const textarea = document.getElementById("content");
-  textarea.value += "\n!! Important text\n";
+/* BASIC */
+function bold() { wrap("**"); }
+function italic() { wrap("*"); }
+function inlineCode() { wrap("`"); }
+
+/* HEADINGS */
+function h1() { insert("\n# Title\n"); }
+function h2() { insert("\n## Section\n"); }
+
+/* STRUCTURE */
+function divider() { insert("\n---\n"); }
+
+function list() {
+  insert("\n- Item 1\n- Item 2\n");
 }
 
-/* MARKDOWN */
+function codeBlock() {
+  insert("\n```\ncode here\n```\n");
+}
+
+/* MEDIA */
+function image() {
+  const url = prompt("Image URL:");
+  if (!url) return;
+  insert(`\n<img src="${url}" class="post-img">\n`);
+}
+
+function link() {
+  const url = prompt("URL:");
+  if (!url) return;
+  insert(`[link text](${url})`);
+}
+
+/* BOXES */
+function highlight() {
+  insert("\n!! Important info\n");
+}
+
+function warning() {
+  insert("\n!!! Warning text\n");
+}
+
+/* ===== MARKDOWN (UPGRADED) ===== */
 
 function markdownToHTML(text) {
 
-  /* headings */
+  // HEADINGS
   text = text.replace(/^# (.*$)/gim, "<h1>$1</h1>");
   text = text.replace(/^## (.*$)/gim, "<h2>$1</h2>");
 
-  /* bold italic */
+  // DIVIDER
+  text = text.replace(/^---$/gim, "<hr>");
+
+  // BOLD / ITALIC / INLINE CODE
   text = text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
   text = text.replace(/\*(.*?)\*/g, "<i>$1</i>");
+  text = text.replace(/`(.*?)`/g, "<code>$1</code>");
 
-  /* code */
+  // CODE BLOCK
   text = text.replace(/```([\s\S]*?)```/g, "<pre><code>$1</code></pre>");
 
-  /* list */
+  // LIST
   text = text.replace(/(?:^- .+\n?)+/gm, match => {
     const items = match.trim().split("\n")
       .map(line => `<li>${line.replace("- ","")}</li>`)
@@ -197,34 +300,35 @@ function markdownToHTML(text) {
     return `<ul>${items}</ul>`;
   });
 
-  /* highlight */
-  text = text.replace(/^!! (.*$)/gim, '<div class="highlight">$1</div>');
+  // LINK
+  text = text.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank">$1</a>');
 
-  /* line breaks */
+  // BOXES
+  text = text.replace(/^!! (.*$)/gim, '<div class="highlight">$1</div>');
+  text = text.replace(/^!!! (.*$)/gim, '<div class="highlight" style="border-left:3px solid red">$1</div>');
+
+  // LINE BREAKS
   text = text.replace(/\n/g, "<br>");
 
   return text;
 }
 
-/* PREVIEW */
+/* ===== PREVIEW ===== */
 
-const contentInput = document.getElementById("content");
 const preview = document.getElementById("preview");
 
-contentInput.addEventListener("input", () => {
-  preview.innerHTML = markdownToHTML(contentInput.value);
+textarea.addEventListener("input", () => {
+  preview.innerHTML = markdownToHTML(textarea.value);
 });
 
-/* GENERATE */
+/* ===== GENERATE ===== */
 
 function generate() {
   const title = document.getElementById("title").value;
   const category = document.getElementById("category").value;
   const cover = document.getElementById("cover").value;
 
-  const content = markdownToHTML(
-    document.getElementById("content").value
-  );
+  const content = markdownToHTML(textarea.value);
 
   const code = `
 {
@@ -250,4 +354,4 @@ function copy() {
 </script>
 
 </body>
-</html> 
+</html>
