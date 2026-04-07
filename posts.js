@@ -22,5 +22,14 @@ window.posts = [
   images: []
 },
 
-
+{
+  title: "Back Accessory",
+  category: "Character Systems",
+  cover: "images/back3.jpg",
+  content: `
+<h2>They are standard and Special, same principle as artifacts Standard</h2><br><div class="highlight">Raccoon Tail, Wolf Tail, Fox Tail.</div><br>They have 3 type of feather - Base ATK, Base HP, Base Def, each upgrade its appy for all.<br>To be visible, you must reach the following levels for each of the three feather:<br><ul><li>Raccoon Tail - all feather 20lv</li><li>Wolf Tail - all feather 60lv</li><li>Fox Tail - all feather 120lv</li></ul><img src="images/back1.jpg" class="post-img"><br><h1>Talent of Back Acceory</h1><br>They are based on the classes available in the game. Each section has 3 identical columns - ATK boost, DEF boost, HP boost. <br>Each of them has subsections, with different classes, some of the subsections are different. These subsections have different maximum levels, some reach level 20, others up to 40.<br>When upgrading a subsection, first raise each section to level 10, so you can unlock all sections and get the effect of all at once, then upgrade.<br><img src="images/back2.jpg" class="post-img"><br><h2>How to get material for upgrading Back Acceory & Talent of Back Acceory</h2><br>This happens when complete levels in Dark Trials - Warrior (Dungeon)<br>This dungeon has a total of 5 levels per stage.<br>From 1 to 4 you earn Feather Coins, which are used to upgrade Feathers on your back accessories.<br>At level 5 you earn Divine Feather Coins, which are used to upgrade talents.<br>Each subsequent level gets harder and harder.<br><img src="images/back4.jpg" class="post-img"><br><h2>Other options for obtaining materials</h2><br>Battle Shop(family brawl)<br>Main family Shop, when femily reach level 7 / 8<br>Random event<br><img src="images/back6.jpg" class="post-img"><img src="images/back7.jpg" class="post-img"><br><br><h1>Useful information</h1><br>In the parking shop you can get a <b>Dark Trials Card</b> for 250k Park Coins, it is used to restart the progress up to this point, therefore, you can go through the levels you have passed so far again and get double rewards.<br><img src="images/back4.jpg" class="post-img"><br>
+  `,
+  images: []
+},
+  
 ];
