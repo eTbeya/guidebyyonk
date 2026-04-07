@@ -12,4 +12,15 @@ const posts = [
 },
 
 
+{
+  title: "Soul",
+  category: "Dungeon",
+  cover: "images/soul7.jpg",
+  content: `
+<h1>Selection</h1><br><div class="highlight">Embed, Fusion, Salvage, Acquisition</div><br><h1>Embed </h1><br>In this section you can see equipped Souls, Pink Soul guidelines, choose which Soul to display under your character, check all Souls, what effects and % they give, and check your available bonus from equipped Souls.<br><img src="images/soul1.png" class="post-img"><br><h1>Fusion</h1><br>From this section, 2 red Souls are combined to get 1 pink Soul.<br>This can be done by combining red souls from collection 1 and 2.<br>Collection 1 are the standard red runes that are taken from the - Soul Prayer, Wining Family Brawl or Family Brawl shop, Points Shop.<br>Collection 2 is more specific and harder to get, it is taken from Cross Arena - Glory shop, cost 4k Glory Medal, you can take 1 per week.<br>In the combination window below it shows which runes from the 2 sections you need, first it shows from collection 1, then from 2.<br>The pink Soul takes the effects of the 2 red ones.<br><img src="images/soul2.png" class="post-img"><br><h1>Salvage</h1><br>From here, you can remove unnecessary Souls to obtain Soul Essence, which can be used to upgrade equipped Souls.<br><img src="images/soul3.png" class="post-img"><br><br><div class="highlight">Acquisition</div><br>This section has 2 subsections - Soul Trail, Soul Prayer. The principle is literally the same as the Farm and Prayer Statue<br><img src="images/soul4.png" class="post-img"><br><br><h1>Soul Trail</h1><br>Here you pass levels with different bosses. For each level you pass, you get souls of a different color.<br>Every 10 levels as a reward you get x10 Soul Crystal which are used in Soul Prayer.<br><img src="images/soul5.png" class="post-img"><br><br><h1>Soul Prayer</h1><br>From here you summon Souls.<br><ul><li>Well (blue) - 80%</li><li>Rare (purple) - 16%</li><li>Epic (yellow) - 3.6%</li><li>Legendary (red) - 0.4%</li></ul><img src="images/soul5.png" class="post-img"><br><div class="highlight">Soul Rush - for complete you need total 20k Soul Essence. And for practice need, to upgrade equipped Souls. Meaning just use 20k Soul Essence for upgrade and your event its done</div>
+  `,
+  images: []
+},
+
+
 ];
