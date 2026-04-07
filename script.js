@@ -213,4 +213,4 @@ img.src = currentImages[currentIndex];
 searchInput.oninput = renderPosts;
 
 generateCategories();
-renderPosts(); 
+renderPosts();
