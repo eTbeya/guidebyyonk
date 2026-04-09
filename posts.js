@@ -184,5 +184,14 @@ More guides will be added over time.
   images: []
 },
 
+  {
+  title: "Relic",
+  category: "System",
+  cover: "images/relic68.png",
+  content: `
+<h1><b>Relic Catalog</b></h1><b>Mask - For basic stats</b><b>Fossil - For Pals</b><b>Treasure - For Pals</b><b>Book - For PVP / PVE</b><b>Statue - For Skill</b><b>Necklace - For Skill</b><b>Spore - For PVP / PVE</b><h1><b>Mask</b></h1><br>Bounded Mask - Archer, Warrior<br>Arrow King Mask - Archer<br>Ironclad Mask - Warrior<br>Priest Mask - Spirit Channeler<br>Demon's Mask - Mage<br><img src="images/relic1.png" class="post-img"><br><h1><b>Fossil</b></h1><br>Thundercaller Kite - All class<br>Glided Eggshell - Chiken Pal<br>Whirlwind Feather - Sprite Pal<br>Amber Snail - Snail & Hydrosprite Pal<br>Dragonweave Circlet - Dragon & Turtle & Lizard Pal<br><img src="images/relic2.png" class="post-img"><br><h1><b>Treasure</b></h1><br>Arrow bamboo - Panda Pal<br>Blue Snowflake - Snow Sprite Pal<br>Blessed Dew - Catus Pal<br>Magic Box - Cat & Deer Pal<br>Metamorphic Crystal - Dog & Fox & Octopus pal<br><img src="images/relic3.png" class="post-img"><br><h1><b>Book</b></h1><br>Flame Book - Archer, Warrior / PVP<br>Beatsthide Book - All class / PVE<br>Immunity Book - All class / PVE<br>Healing Book - All class / PVE<br>Stonewrit Tome - All class / PVP<br><img src="images/relic4.png" class="post-img"><br><h1><b>Statue</b></h1><br>Energy Statue - Batty Trace, Nature's Renewal, Shroom Shield<br>Cage Statue - Durian Bomb, Easy Breezy, Take it Slow<br>Crystal Statue - Coin Bomb, Slime Bomb, Meteor Fail<br>Time Statue - Disarm, Dazzled, Smoke Bomb<br>Stellar Statue - Hundred Slashes, Wordly Snare, Star Array, Ancestral Will<br><img src="images/relic7.jpg" class="post-img"><br><h1><b>Necklace</b></h1><br>Shield Necklace - Grim Reaper's<br>Crimson Sickle Necklace - Wild gust, Blade Pierce<br>Storm Necklace - Heroic Descent, Clone Strike<br>Spirit Necklace - Blitz Assault<br>Abyss Necklace - Dragonic Resonance, Windorne Arrow, Crimson moonfaill, Winged Dreams<br><img src="images/relic5.png" class="post-img"><br><h1><b>Spore</b></h1><br>Chrono Spore - Cross the Abyssal Portal, Guard the Ruined Ancient City, Snowland Boss Stages, Pantheon Trail. Effect - add more 7 second to total time.<br>Nirvana Spore - PVP, PVE, PAl, Artefact, Back Accessory, Star hero.<br>Potent Spore - Relic<br>Plumed Spore - PVP / PVE<br>Thorny spore - PVP<br><img src="images/relic6.png" class="post-img"><br><div class="highlight"><b>Spore Relic (in midle) its unlock, when you unlock all other 30 relic in normal category. </b><b>Before relic icon in any section its writen what type its</b></div>
+  `,
+  images: []
+},
 
 ];
